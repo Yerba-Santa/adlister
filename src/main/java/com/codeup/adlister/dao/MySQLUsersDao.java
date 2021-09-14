@@ -5,20 +5,11 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
-public class MySQLUsersDao implements Users {
-    private Connection connection;
+public class MySQLUsersDao extends MasterDAO implements Users{
 
-    public MySQLUsersDao(Config config) {
-        try {
-            DriverManager.registerDriver(new Driver());
-            connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
-            );
-        } catch (SQLException e) {
-            throw new RuntimeException("Error connecting to the database!", e);
-        }
+    @Override
+    public Connection connectDatabase(Config config) {
+        return super.connectDatabase(config);
     }
 
     @Override
