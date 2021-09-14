@@ -25,6 +25,17 @@ public class MySQLUsersDao extends MasterDAO implements Users{
     }
 
     @Override
+    //function to check database if username already exits - CG
+    public Boolean check(User user){
+        if(findByUsername(user.getUsername()) != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    @Override
     public Long insert(User user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
         try {
