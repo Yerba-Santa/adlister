@@ -11,7 +11,7 @@
            <li>
                <form action="/ads/search" METHOD="POST">
                    <input id="title" name="keyword" class="form-control" type="text">
-                   <input type="submit" class="btn btn-primary btn-block" value="Search">
+                  <button type="submit" class="btn btn-primary btn-block" value="Search">Search</button>
                </form>
            </li>
         </ul>

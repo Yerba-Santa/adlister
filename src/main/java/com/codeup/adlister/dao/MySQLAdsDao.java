@@ -28,17 +28,19 @@ public class MySQLAdsDao implements Ads {
     }
 
     //CREATE METHOD FOR SEARCH
-//    @Override
-    public List<Ad> search(String keyword) throws SQLException {
-            String query = "SELECT * FROM ads WHERE title LIKE ?";
-            try {
-                PreparedStatement stmt = connection.prepareStatement(query);
-                stmt.setString(1, keyword);
-                return createAdsFromResults(stmt.executeQuery());
-            } catch (SQLException e) {
-                throw new RuntimeException("Error finding a user by username", e);
-            }
+    @Override
+    public List<Ad> search(String keyword) {
+        String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, '%' + keyword + '%');
+            stmt.setString(2, '%' + keyword + '%');
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding ad", e);
         }
+    }
 
     @Override
     public List<Ad> all() {
