@@ -19,7 +19,7 @@
     <p>${ad.description}</p>
 
     <h2>Contact Information:</h2>
-    <a href="${pageContext.request.contextPath}/profile"><h3>User: ${user.username}</h3></a>
+    <a href="${pageContext.request.contextPath}/profile"><h3>User: ${user.username}</h3></a><%--Link to profile page - CG--%>
     <h4>Email: ${user.email}</h4>
 
 </body>
