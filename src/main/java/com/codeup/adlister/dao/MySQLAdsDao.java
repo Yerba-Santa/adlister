@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -14,12 +15,27 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
+        }
+    }
+
+    //CREATE METHOD FOR SEARCH, ASK HOW TO ADD CATEGORIES, DO I NEED TO ADD TO
+    @Override
+    public List<Ad> search(String keyword) {
+        String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ? ";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, '%' + keyword + '%');
+            stmt.setString(2, '%' + keyword + '%');
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding ad", e);
         }
     }
 
@@ -54,10 +70,10 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
         );
     }
 
@@ -102,4 +118,18 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    public void addCategory(Long ad_ID, Long category_ID){
+        try {
+            String insertQuery = "INSERT INTO ad_categories(ad_id, category_id) VALUES (?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad_ID);
+            stmt.setLong(2, category_ID);
+            stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
 }

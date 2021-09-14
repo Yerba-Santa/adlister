@@ -21,7 +21,6 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
@@ -45,6 +44,17 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+
+    @Override
+    //function to check database if username already exits - CG
+    public Boolean check(User user){
+        if(findByUsername(user.getUsername()) != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     @Override
     public Long insert(User user) {

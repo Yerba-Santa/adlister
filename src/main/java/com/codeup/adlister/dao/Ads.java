@@ -12,4 +12,9 @@ public interface Ads {
     Long insert(Ad ad);
     Ad findById(long id);
     Long findUserId(long id);
+
+    List<Ad> search(String keyword);
+
+    void addCategory(Long ad_ID, Long category_ID);
+
 }
