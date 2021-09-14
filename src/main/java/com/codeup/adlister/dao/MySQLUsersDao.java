@@ -33,6 +33,18 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    public User findById(long id) {
+        String query = "SELECT * FROM users WHERE id = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, String.valueOf(id));
+            return extractUser(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by id", e);
+        }
+    }
+
+
     @Override
     //function to check database if username already exits - CG
     public Boolean check(User user){
