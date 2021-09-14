@@ -22,6 +22,9 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
+        //TODO: Hashpassword? - CG
+
+
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
@@ -35,6 +38,13 @@ public class RegisterServlet extends HttpServlet {
 
         // create and save a new user
         User user = new User(username, email, password);
+
+        //call check user function in MySQLUsersDao -CG
+        if(DaoFactory.getUsersDao().check(user)){
+            response.sendRedirect("/register");
+            return;
+        }
+
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
     }
