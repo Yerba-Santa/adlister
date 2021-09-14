@@ -26,6 +26,8 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    //CREATE METHOD FOR SEARCH
+
     @Override
     public List<Ad> all() {
         PreparedStatement stmt = null;
