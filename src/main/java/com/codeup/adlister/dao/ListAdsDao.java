@@ -5,15 +5,15 @@
 //import java.util.ArrayList;
 //import java.util.List;
 //
-////public class ListAdsDao implements Ads {
-////    private List<Ad> ads;
-////
-////    public List<Ad> all() {
-////        if (ads == null) {
-////            ads = generateAds();
-////        }
-////        return ads;
-////    }
+//public class ListAdsDao implements Ads {
+//    private List<Ad> ads;
+//
+//    public List<Ad> all() {
+//        if (ads == null) {
+//            ads = generateAds();
+//        }
+//        return ads;
+//    }
 //
 //    public Long insert(Ad ad) {
 //        // make sure we have ads

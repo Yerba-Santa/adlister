@@ -17,6 +17,24 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
+            <div class="categories">
+
+                <label for="electronics-media">Electronics/Media</label>
+                <input id="electronics-media" name="electronics-media" type="checkbox">
+
+                <label for="clothing">Clothing</label>
+                <input id="clothing" name="clothing" type="checkbox">
+
+                <label for="vehicles">Vehicles</label>
+                <input id="vehicles" name="vehicles" type="checkbox">
+
+                <label for="sporting-goods">Sporting Goods/Outdoors</label>
+                <input id="sporting-goods" name="sporting-goods" type="checkbox">
+
+                <label for="pets">Pets</label>
+                <input id="pets" name="pets" type="checkbox">
+
+            </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
