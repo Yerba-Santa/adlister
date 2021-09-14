@@ -8,12 +8,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLAdsDao extends MasterDAO implements Ads{
+public class MySQLAdsDao implements Ads{
+    private Connection connection;
 
-
-    @Override
-    public Connection connectDatabase(Config config) {
-        return super.connectDatabase(config);
+    public MySQLAdsDao(Config config) {
+        try {
+            DriverManager.registerDriver(new Driver());
+            connection = DriverManager.getConnection(
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error connecting to the database!", e);
+        }
+    }
 
     //CREATE METHOD FOR SEARCH, ASK HOW TO ADD CATEGORIES, DO I NEED TO ADD TO
     @Override
