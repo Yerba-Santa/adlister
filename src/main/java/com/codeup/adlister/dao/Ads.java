@@ -11,4 +11,8 @@ public interface Ads {
     Long insert(Ad ad);
 
     List<Ad> search(String keyword);
+
+    void addCategory(Long ad_ID, Long category_ID);
+
+
 }

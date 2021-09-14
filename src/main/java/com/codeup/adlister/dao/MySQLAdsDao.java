@@ -27,10 +27,10 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    //CREATE METHOD FOR SEARCH
+    //CREATE METHOD FOR SEARCH, ASK HOW TO ADD CATEGORIES, DO I NEED TO ADD TO
     @Override
     public List<Ad> search(String keyword) {
-        String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+        String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ? ";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, '%' + keyword + '%');
@@ -87,4 +87,18 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    public void addCategory(Long ad_ID, Long category_ID){
+        try {
+            String insertQuery = "INSERT INTO ad_categories(ad_id, category_id) VALUES (?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad_ID);
+            stmt.setLong(2, category_ID);
+            stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
 }
