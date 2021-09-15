@@ -23,14 +23,6 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                user.getId(),
-                request.getParameter("title"),
-                request.getParameter("description")
-                //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
-        );
-
         //set attributes for page so create.jsp can register if not null - CG
         //TODO sticky forms won't work until testing for null or not
         String title = request.getParameter("title");
@@ -38,6 +30,15 @@ public class CreateAdServlet extends HttpServlet {
         request.getSession().setAttribute("title", title);
         request.getSession().setAttribute("description", description);
 
+        //TODO sticky forms won't work until testing for null or not
+
+        User user = (User) request.getSession().getAttribute("user");
+        Ad ad = new Ad(
+                user.getId(),
+                request.getParameter("title"),
+                request.getParameter("description")
+                //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
+        );
 
         Long IDofNewAd = DaoFactory.getAdsDao().insert(ad);
         if (request.getParameter("clothing") != null) {
@@ -60,8 +61,6 @@ public class CreateAdServlet extends HttpServlet {
         //set parameters as null because all correct and no longer need to be pre-filled in -CG
         request.getSession().setAttribute("title", title);
         request.getSession().setAttribute("description", description);
-
-
 
         response.sendRedirect("/ads");
     }

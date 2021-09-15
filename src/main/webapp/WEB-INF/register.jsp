@@ -11,7 +11,6 @@
     <div class="container">
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post">
-
             <div class="form-group">
                 <label for="username">Username</label>
                 <c:if test="${sessionScope.username != null}">
@@ -25,7 +24,8 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <c:if test="${sessionScope.email != null}">
-                    <input id="email" name="email" class="form-control" type="text" value="${sessionScope.email}">                </c:if>
+                    <input id="email" name="email" class="form-control" type="text" value="${sessionScope.email}">
+                </c:if>
                 <c:if test="${sessionScope.email == null}">
                     <input id="email" name="email" class="form-control" type="text">
                 </c:if>
