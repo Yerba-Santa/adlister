@@ -30,6 +30,9 @@ public class CreateAdServlet extends HttpServlet {
                 request.getParameter("description")
                 //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
         );
+
+        //TODO  error message if null
+
         Long IDofNewAd = DaoFactory.getAdsDao().insert(ad);
         if (request.getParameter("clothing") != null) {
             DaoFactory.getAdsDao().addCategory(IDofNewAd, 2L);

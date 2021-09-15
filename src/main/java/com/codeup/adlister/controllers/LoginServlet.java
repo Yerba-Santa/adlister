@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
+        //TODO message saying username not found
         if (user == null) {
             response.sendRedirect("/login");
             return;
@@ -33,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 
         boolean validAttempt = Password.check(password, user.getPassword());
 
+        //TODO message saying password & UN don't match
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");

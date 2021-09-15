@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
@@ -7,7 +8,12 @@
 </head>
 <body>
     <jsp:include page="partials/navbar.jsp" />
+
     <div class="container">
+        <c:if test="${sessionScope.errorMessage != null}">
+            <jsp:include page="partials/messages.jsp" />
+        </c:if>
+
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post">
             <div class="form-group">
