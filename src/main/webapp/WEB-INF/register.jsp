@@ -10,7 +10,7 @@
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
 
-        <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+        <jsp:include page="/WEB-INF/partials/messages.jsp" />
 
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post">

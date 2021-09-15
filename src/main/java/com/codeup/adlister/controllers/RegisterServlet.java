@@ -26,18 +26,24 @@ public class RegisterServlet extends HttpServlet {
         request.getSession().setAttribute("username", username);
         request.getSession().setAttribute("email", email);
 
-        // validate input
+        // validate input is not null and set error message
+        if(username.isEmpty()){
+            setErrorMessageAndRedirect("Username can't be empty", response, request);
+            return;
+        }
 
+        if(email.isEmpty()){
+            setErrorMessageAndRedirect("Email can't be empty", response, request);
+            return;
+        }
 
+        if(password.isEmpty()){
+            setErrorMessageAndRedirect("Password can't be empty", response, request);
+            return;
+        }
 
-        boolean inputHasErrors = username.isEmpty()
-                || email.isEmpty()
-                || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
-
-        if (inputHasErrors) {
-            //call method to check error and set error message and set where redirect can go
-            response.sendRedirect("/register");
+        if(!password.equals(passwordConfirmation)){
+            setErrorMessageAndRedirect("Passwords don't match", response, request);
             return;
         }
 
@@ -45,58 +51,43 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, email, password);
 
         //Verify email address, email is correct format, password is correct format, if user already exists -BR
-        boolean verificationError = DaoFactory.getUsersDao().check(user) ||
-                                    DaoFactory.getUsersDao().emailDuplicates(user) ||
-                                    !DaoFactory.getUsersDao().emailInputIsValid(email) ||
-                                    !DaoFactory.getUsersDao().passwordInputIsValid(password);
-
-        if(verificationError){
-            response.sendRedirect("/register");
+        if(DaoFactory.getUsersDao().check(user)){
+            setErrorMessageAndRedirect("Username already exists, pick a different one", response, request);
             return;
         }
 
-       /*
-       Call passwordInputIsValid to check if password is in correct format:
-       It contains at least 5 characters and at most 15 characters.
-       It contains at least one digit.
-       It contains at least one upper case alphabet.
-       It contains at least one lower case alphabet.
-       It contains at least one special character which includes !@#$%&*()-+=^.
-       It doesn’t contain any white space.
-        -BR */
+        if(DaoFactory.getUsersDao().emailDuplicates(user)){
+            setErrorMessageAndRedirect("An account with this username already exists", response, request);
+            //TODO little link to login instead?
+            return;
+        }
+
+        if(!DaoFactory.getUsersDao().emailInputIsValid(email)){
+            setErrorMessageAndRedirect("Please enter a valid email", response, request);
+            return;
+        }
+
+        if(!DaoFactory.getUsersDao().passwordInputIsValid(password)){
+            setErrorMessageAndRedirect("Password must be between 5 and 15 characters, " +
+                    "contain at least one digit, one lower case character, one special character" +
+                    " and one upper case character" +
+                    "and not contain white space", response, request);
+            //TODO add more specific password error message
+            return;
+        }
 
         //clear username & email attribute for sticky form -CG
         request.getSession().setAttribute("username", null);
         request.getSession().setAttribute("email", null);
 
+        //finalize inputting user, redirect to login
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
 
     }
 
-    protected void validateNotNull(String data, String type){
-        if(data.isEmpty()){
-            switch (type){
-                case "username":
-                    break;
-                case "email":
-                    break;
-                case "password"  :
-
-
-
-
-
-
-
-
-
-            }
-        }
-
-
-
-
+    protected void setErrorMessageAndRedirect(String errorMessage, HttpServletResponse response, HttpServletRequest request) throws IOException {
+        request.getSession().setAttribute("errorMessage", errorMessage);
+        response.sendRedirect("/register");
     }
-
 }
