@@ -4,15 +4,12 @@ import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLAdsDao implements Ads {
-    private Connection connection = null;
+public class MySQLAdsDao implements Ads{
+    private Connection connection;
 
     public MySQLAdsDao(Config config) {
         try {
@@ -27,10 +24,10 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    //CREATE METHOD FOR SEARCH
+    //CREATE METHOD FOR SEARCH, ASK HOW TO ADD CATEGORIES, DO I NEED TO ADD TO
     @Override
     public List<Ad> search(String keyword) {
-        String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+        String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ? ";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, '%' + keyword + '%');
@@ -80,6 +77,40 @@ public class MySQLAdsDao implements Ads {
         );
     }
 
+    //Added findbyId Method - CG
+    @Override
+    public Ad findById(long id){
+        try {
+            String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, String.valueOf(id));
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                return extractAd(rs);
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a Ad by Id", e);
+        }
+    }
+
+    //find userId that matches ad_id - CG
+    @Override
+    public Long findUserId(long id){
+        try {
+            String query = "SELECT user_id FROM ads WHERE id = ? LIMIT 1";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, String.valueOf(id));
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                return rs.getLong("user_id");
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a Ad by Id", e);
+        }
+    }
+
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {
@@ -87,4 +118,18 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    public void addCategory(Long ad_ID, Long category_ID){
+        try {
+            String insertQuery = "INSERT INTO ad_categories(ad_id, category_id) VALUES (?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad_ID);
+            stmt.setLong(2, category_ID);
+            stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
 }
