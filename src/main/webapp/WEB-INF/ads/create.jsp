@@ -8,6 +8,9 @@
 </head>
 <body>
 <div class="container">
+
+    <jsp:include page="/WEB-INF/partials/messages.jsp" />
+
     <h1>Create a new Ad</h1>
     <form action="/ads/create" method="post">
 
