@@ -9,4 +9,6 @@ public interface Users {
     Long insert(User user);
     User findById(long id);
     Boolean check(User user); //added by CG
+    User findByEmail(String email);//BR
+    Boolean validateEmail(User user); //BR
 }

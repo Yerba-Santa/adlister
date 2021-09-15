@@ -44,6 +44,18 @@ public class MySQLUsersDao implements Users{
         }
     }
 
+    @Override
+    public User findByEmail(String email){
+        String query = "SELECT * FROM users WHERE email = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, email);
+            return extractUser(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Email is already in use", e);
+        }
+    }
+
 
     @Override
     //function to check database if username already exits - CG
@@ -54,6 +66,12 @@ public class MySQLUsersDao implements Users{
         else{
             return false;
         }
+    }
+
+    @Override
+    //check if email is already in use - BR
+    public Boolean validateEmail(User user){
+        return findByEmail(user.getEmail()) != null;
     }
 
     @Override
