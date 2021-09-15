@@ -22,9 +22,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
-        //TODO: Hashpassword? - CG
-
-        //set attributes for page so register.jsp can register if not null
+        //set attributes for page so register.jsp can register if not null - CG
         request.getSession().setAttribute("username", username);
         request.getSession().setAttribute("email", email);
 
@@ -49,8 +47,7 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-
-        //clear username & email attricbute? Because worked and no longer want to be filled in
+        //clear username & email attribute? Because worked and no longer want to be filled in -CG
         request.getSession().setAttribute("username", null);
         request.getSession().setAttribute("email", null);
         DaoFactory.getUsersDao().insert(user);
