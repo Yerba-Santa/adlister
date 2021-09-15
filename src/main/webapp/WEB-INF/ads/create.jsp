@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -9,18 +10,28 @@
 <div class="container">
     <h1>Create a new Ad</h1>
     <form action="/ads/create" method="post">
+
         <div class="form-group">
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text">
+            <c:if test="${sessionScope.title != null}">
+                <input id="title" name="title" class="form-control" type="text" value="${sessionScope.title}">
+            </c:if>
+            <c:if test="${sessionScope.title == null}">
+                <input id="title" name="title" class="form-control" type="text">
+            </c:if>
         </div>
+
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text"></textarea>
+            <c:if test="${sessionScope.description != null}">
+                <textarea id="description" name="description" class="form-control" type="text" value="${sessionScope.description}"></textarea>
+            </c:if>
+            <c:if test="${sessionScope.description == null}">
+                <textarea id="description" name="description" class="form-control" type="text"></textarea>
+            </c:if>
         </div>
 
         <div class="form-group">
-
-
             <div class="categories">
 
                 <label for="electronics-media">Electronics/Media</label>

@@ -27,14 +27,17 @@ public class CreateAdServlet extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
 
+        //set attributes for page so register.jsp can register if not null - CG
+        request.getSession().setAttribute("title", title);
+        request.getSession().setAttribute("description", description);
+
         boolean inputHasErrors = title.isEmpty()
                 || description.isEmpty();
 
         if (inputHasErrors) {
             response.sendRedirect("/ads/create");
-        } else {
-
-
+            return;
+        }
 
             Ad ad = new Ad(
                     user.getId(),
@@ -42,6 +45,7 @@ public class CreateAdServlet extends HttpServlet {
                     request.getParameter("description")
                     //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
             );
+
             Long IDofNewAd = DaoFactory.getAdsDao().insert(ad);
             if (request.getParameter("clothing") != null) {
                 DaoFactory.getAdsDao().addCategory(IDofNewAd, 2L);
@@ -59,7 +63,10 @@ public class CreateAdServlet extends HttpServlet {
             if (request.getParameter("pets") != null) {
                 DaoFactory.getAdsDao().addCategory(IDofNewAd, 5L);
             }
+
+            //clear title & description attribute Because worked and no longer want to be filled in -CG
+            request.getSession().setAttribute("title", null);
+            request.getSession().setAttribute("description", null);
             response.sendRedirect("/ads");
-        }
     }
 }
