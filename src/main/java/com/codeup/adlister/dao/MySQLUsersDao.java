@@ -3,9 +3,11 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
-import java.sql.*;
 
-public class MySQLUsersDao implements Users{
+import java.sql.*;
+import java.util.regex.Pattern;
+
+public class MySQLUsersDao implements Users {
     private Connection connection;
 
     public MySQLUsersDao(Config config) {
@@ -45,7 +47,7 @@ public class MySQLUsersDao implements Users{
     }
 
     @Override
-    public User findByEmail(String email){
+    public User findByEmail(String email) {
         String query = "SELECT * FROM users WHERE email = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -59,20 +61,33 @@ public class MySQLUsersDao implements Users{
 
     @Override
     //function to check database if username already exits - CG
-    public Boolean check(User user){
-        if(findByUsername(user.getUsername()) != null){
+    public Boolean check(User user) {
+        if (findByUsername(user.getUsername()) != null) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
     @Override
     //check if email is already in use - BR
-    public Boolean validateEmail(User user){
-        return findByEmail(user.getEmail()) != null;
+    public Boolean validateEmail(User user) {
+
+        if (findByEmail(user.getEmail()) != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
+    public Boolean emailIsValid(String email) {
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        if (email == null)
+            return false;
+        return pattern.matcher(email).matches();
+    }
+
 
     @Override
     public Long insert(User user) {
@@ -92,14 +107,14 @@ public class MySQLUsersDao implements Users{
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
+        if (!rs.next()) {
             return null;
         }
         return new User(
-            rs.getLong("id"),
-            rs.getString("username"),
-            rs.getString("email"),
-            rs.getString("password")
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password")
         );
     }
 

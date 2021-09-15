@@ -24,7 +24,7 @@ public class MySQLAdsDao implements Ads{
         }
     }
 
-    //CREATE METHOD FOR SEARCH, ASK HOW TO ADD CATEGORIES, DO I NEED TO ADD TO
+    //Search function -BR
     @Override
     public List<Ad> search(String keyword) {
         String query = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ? ";
@@ -119,6 +119,7 @@ public class MySQLAdsDao implements Ads{
         return ads;
     }
 
+    //Add category -BR
     public void addCategory(Long ad_ID, Long category_ID){
         try {
             String insertQuery = "INSERT INTO ad_categories(ad_id, category_id) VALUES (?, ?)";

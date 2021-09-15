@@ -11,4 +11,5 @@ public interface Users {
     Boolean check(User user); //added by CG
     User findByEmail(String email);//BR
     Boolean validateEmail(User user); //BR
+    Boolean emailIsValid(String email);
 }

@@ -36,6 +36,7 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
+
         // create and save a new user
         User user = new User(username, email, password);
 
@@ -45,7 +46,26 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
+        //Call validateEmail - BR
+        if (DaoFactory.getUsersDao().validateEmail(user)){
+            response.sendRedirect("/register");
+            return;
+        }
+
+        //Call emailIsValid - BR
+        if (DaoFactory.getUsersDao().emailIsValid(email)){
+            response.sendRedirect("/register");
+            return;
+        }
+
+
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
+
+
+
+
+
     }
+
 }
