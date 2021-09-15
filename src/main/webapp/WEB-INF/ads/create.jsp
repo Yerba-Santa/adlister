@@ -40,6 +40,9 @@
 
             </div>
             <input type="submit" class="btn btn-block btn-primary">
+
+            <input type="hidden" name="redirect" value="${redirect}">
+
     </form>
 </div>
 </body>
