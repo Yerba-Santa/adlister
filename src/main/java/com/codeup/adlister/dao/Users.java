@@ -10,6 +10,7 @@ public interface Users {
     User findById(long id);
     Boolean check(User user); //added by CG
     User findByEmail(String email);//BR
-    Boolean validateEmail(User user); //BR
-    Boolean emailIsValid(String email);
+    Boolean emailDuplicates(User user); //BR
+    Boolean emailInputIsValid(String email);//BR
+    Boolean passwordInputIsValid(String password);
 }

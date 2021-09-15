@@ -5,6 +5,7 @@ import com.mysql.cj.jdbc.Driver;
 
 
 import java.sql.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MySQLUsersDao implements Users {
@@ -34,6 +35,7 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error finding a user by username", e);
         }
     }
+
 
     public User findById(long id) {
         String query = "SELECT * FROM users WHERE id = ? LIMIT 1";
@@ -71,7 +73,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     //check if email is already in use - BR
-    public Boolean validateEmail(User user) {
+    public Boolean emailDuplicates(User user) {
 
         if (findByEmail(user.getEmail()) != null) {
             return true;
@@ -80,14 +82,38 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-    public Boolean emailIsValid(String email) {
-        String regex = "^(.+)@(.+)$";
+    public Boolean emailInputIsValid(String email) { //BR
+        String regex ="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\."
+                + "[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
         Pattern pattern = Pattern.compile(regex);
-        if (email == null)
+        if (email == null) {
             return false;
+        }
         return pattern.matcher(email).matches();
     }
 
+
+    /*
+       Call passwordInputIsValid to check if password is in correct format:
+       It contains at least 5 characters and at most 15 characters.
+       It contains at least one digit.
+       It contains at least one upper case alphabet.
+       It contains at least one lower case alphabet.
+       It contains at least one special character which includes !@#$%&*()-+=^.
+       It doesn’t contain any white space.
+        */
+    @Override
+    public Boolean passwordInputIsValid(String password) { //BR
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&-+=()])(?=\\S+$).{5,15}$";
+        Pattern p = Pattern.compile(regex);
+
+        if (password == null) {
+            return false;
+        }
+        Matcher m = p.matcher(password);
+
+        return m.matches();
+    }
 
     @Override
     public Long insert(User user) {
