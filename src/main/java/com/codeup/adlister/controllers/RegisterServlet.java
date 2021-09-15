@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
 
        /*
        Call passwordInputIsValid to check if password is in correct format:
-       It contains at least 8 characters and at most 20 characters.
+       It contains at least 5 characters and at most 15 characters.
        It contains at least one digit.
        It contains at least one upper case alphabet.
        It contains at least one lower case alphabet.
