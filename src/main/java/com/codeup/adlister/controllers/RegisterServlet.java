@@ -33,6 +33,7 @@ public class RegisterServlet extends HttpServlet {
                 || (! password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
+            //call method to chcek error and set error message and set where redirect can go
             response.sendRedirect("/register");
             return;
         }
