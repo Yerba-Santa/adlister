@@ -22,18 +22,21 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
-        //set attributes for page so register.jsp can register if not null - CG
+        //set attributes for page so register.jsp can display if not null - CG
         request.getSession().setAttribute("username", username);
         request.getSession().setAttribute("email", email);
 
         // validate input
+
+
+
         boolean inputHasErrors = username.isEmpty()
                 || email.isEmpty()
                 || password.isEmpty()
                 || (! password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
-            //call method to chcek error and set error message and set where redirect can go
+            //call method to check error and set error message and set where redirect can go
             response.sendRedirect("/register");
             return;
         }
@@ -60,14 +63,39 @@ public class RegisterServlet extends HttpServlet {
        It contains at least one lower case alphabet.
        It contains at least one special character which includes !@#$%&*()-+=^.
        It doesn’t contain any white space.
-        */
+        -BR */
 
-        //clear username & email attribute? Because worked and no longer want to be filled in -CG
+        //clear username & email attribute for sticky form -CG
         request.getSession().setAttribute("username", null);
         request.getSession().setAttribute("email", null);
 
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
+
+    }
+
+    protected void validateNotNull(String data, String type){
+        if(data.isEmpty()){
+            switch (type){
+                case "username":
+                    break;
+                case "email":
+                    break;
+                case "password"  :
+
+
+
+
+
+
+
+
+
+            }
+        }
+
+
+
 
     }
 
