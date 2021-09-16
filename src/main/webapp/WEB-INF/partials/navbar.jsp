@@ -50,41 +50,40 @@
 
 <%--IF USER IS LOGGED IN--%>
 <c:if test="${sessionScope.user != null}">
-    <nav class="navbar navbar-default">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">ADLISTER</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">ADLISTER</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/ads/create"><i class="fas fa-plus-circle">Create New Ad</i></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        View Ads
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/ads">All</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Electronics & Media</a>
-                        <a class="dropdown-item" href="#">Clothing</a>
-                        <a class="dropdown-item" href="#">Pets</a>
-                        <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>
-                        <a class="dropdown-item" href="#">Vehicles</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ads/create"><i class="fas fa-plus-circle">Create New Ad</i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            View Ads
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/ads">All</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Electronics & Media</a>
+                            <a class="dropdown-item" href="#">Clothing</a>
+                            <a class="dropdown-item" href="#">Pets</a>
+                            <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>
+                            <a class="dropdown-item" href="#">Vehicles</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
 </c:if>
 
 
