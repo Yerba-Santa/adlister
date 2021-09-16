@@ -16,6 +16,7 @@
             <a class="navbar-brand" href="/">Adlister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
+            <li></li>
             <li><i class="fas fa-user"><!--something--></i></li>
             <li><a href="/login">Login</a></li>
             <li><i class="fas fa-user-plus"><!--something--></i></li>
@@ -47,9 +48,9 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container" id="categories-header">
-            <h3 >CATEGORIES</h3>
-            <span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Electronics & Media</a></span><span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Clothing</a></span>
-            <span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search"></a>Pets</span><span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a
+            <h3><i class="fa fa-hashtag" aria-hidden="true">CATEGORIES</i></h3>
+            <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Electronics & Media</a></span><span class="align-top w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Clothing</a></span>
+            <span class="align-middle w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Pets</a></span><span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a
                 href="/ads/search">Sporting Goods & Outdoors</a></span>
             <span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Vehicles</a></span>
         </div>
@@ -58,14 +59,7 @@
 
 
     <footer class="w3-container w3-padding-32 w3-dark-grey">
-        <div class="w3-row-padding">
-            <div class="w3-third">
-                <h3>FOOTER</h3>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-                <p>Powered by Yerba Santa</p>
-            </div>
-
-
+        <div class="w3-black w3-center w3-padding-24">Powered by Yerba-Santa</div>
 <%--            <div class="w3-third">--%>
 <%--                <h3>BLOG POSTS</h3>--%>
 <%--                <ul class="w3-ul w3-hoverable">--%>
@@ -81,8 +75,6 @@
 <%--                    </li>--%>
 <%--                </ul>--%>
 <%--            </div>--%>
-
-
 
         </div>
     </footer>

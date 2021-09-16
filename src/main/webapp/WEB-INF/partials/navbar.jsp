@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Viewing All The Ads" />
+        <jsp:param name="title" value="Viewing All The Ads"/>
     </jsp:include>
     <link rel="stylesheet" href="/main.css">
 </head>
@@ -18,12 +18,12 @@
                 <li><a href="/login">Login</a></li>
                 <li><i class="fas fa-user-plus"><!--something--></i></li>
                 <li><a href="/register">Register</a></li>
-<%--                <li>--%>
-<%--                    <form action="/ads/search" METHOD="POST">--%>
-<%--                        <input id="keyword" name="keyword" class="form-control" type="text">--%>
-<%--                        <button type="submit" class="btn btn-primary btn-block" value="Search">Search</button>--%>
-<%--                    </form>--%>
-<%--                </li>--%>
+                    <%--                <li>--%>
+                    <%--                    <form action="/ads/search" METHOD="POST">--%>
+                    <%--                        <input id="keyword" name="keyword" class="form-control" type="text">--%>
+                    <%--                        <button type="submit" class="btn btn-primary btn-block" value="Search">Search</button>--%>
+                    <%--                    </form>--%>
+                    <%--                </li>--%>
             </ul>
         </div>
     </nav>
@@ -37,8 +37,10 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                     <%--                        <li><a href="/login">Login</a></li>--%>
+                <li><i class="fas fa-user"><!--something--></i></li>
                 <li><a href="/logout">Logout</a></li>
                     <%--                        <li><a href="/register">Register</a></li>--%>
+                <li><i class="fa fa-plus" aria-hidden="true"></i></li>
                 <li><a href="/ads/create">Create Ad</a></li>
                 <li>
                     <form action="/ads/search" METHOD="POST">
