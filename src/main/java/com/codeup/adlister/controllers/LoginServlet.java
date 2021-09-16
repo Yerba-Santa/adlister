@@ -37,7 +37,6 @@ public class LoginServlet extends HttpServlet {
 
         boolean validAttempt = Password.check(password, user.getPassword());
 
-
         //redirect user to previous page once logged in - CG
         if (validAttempt) {
             request.getSession().setAttribute("user", user);

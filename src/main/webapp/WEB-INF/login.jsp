@@ -21,6 +21,8 @@
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
             <input type="hidden" name="redirect" value="${redirect}">
         </form>
+
+        <p>Don't have an account? <a href="${pageContext.request.contextPath}/register">Create an Account!</a></p>
     </div>
 </body>
 </html>
