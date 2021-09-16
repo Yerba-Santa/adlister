@@ -10,7 +10,7 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Please Log In" />
+        <jsp:param name="title" value="Recover Username" />
     </jsp:include>
 </head>
 <body>
@@ -30,7 +30,7 @@
             <h3>Your username is: ${sessionScope.username}</h3>
         </c:if>
 
-        <a href="${pageContext.request.contextPath}/login"><p>Return to Login</p></a><%--Link to profile page - CG--%>
+        <a href="${pageContext.request.contextPath}/login"><p>Return to Login</p></a>
     </div>
 
 </body>
