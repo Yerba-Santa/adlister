@@ -83,6 +83,19 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error updating ad", e);
         }
     }
+    public void delete(long id) {
+        String Query = "DELETE FROM ads WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(Query);
+            stmt.setLong(1, id);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by username", e);
+        }
+
+    }
+
+
     public Ad findById(long id) {
         String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
         try {

@@ -12,7 +12,10 @@
         <div class="col-md-6">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
-            <a href="/ads/updateads?ad_id=${ad.id}">update</a>
+            <a href="/ads/updateads?ad_id=${ad.id}" class="btn btn-success">Update</a>
+            <a href="/ads/delete?ad_id=${ad.id}" class="btn btn-danger">Delete</a>
+
+
         </div>
     </c:forEach>
 
