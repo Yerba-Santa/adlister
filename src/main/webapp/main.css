@@ -1,8 +1,16 @@
 body, h1, h2, h3, h4, h5, h6 {font-family: "Raleway", sans-serif}
-.nav-item {font-family: "Raleway", sans-serif}
+.nav-item, .nav-link {font-family: "Raleway", sans-serif; display: flex; margin-right: auto}
+.jumbo-container > h1 {display: flex; justify-content: center}
+.jumbo-container > p {display: flex; justify-content: center}
+.categories-container > h3 {display: flex; justify-content: center}
+.categories-container {display: flex; flex-direction: column}
+.category {display: flex; justify-content: space-evenly}
 
 
-body
+
+
+
+
 
 
 
