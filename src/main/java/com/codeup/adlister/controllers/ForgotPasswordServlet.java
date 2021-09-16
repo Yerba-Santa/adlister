@@ -57,6 +57,8 @@ public class ForgotPasswordServlet extends HttpServlet {
         }
         else{
             //TODO reset password information - ASK FOR HELP
+            //can use setters for
+            user.setPassword(newPassword);
         }
 
         request.getSession().setAttribute("username", user.getUsername());
