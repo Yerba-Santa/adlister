@@ -46,6 +46,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         //TODO: Error Message if password is null
         //TODO: Error message & if statement for password not matching criteria
         //TODO: error message is passwords don't match
+        //TODO: Error Messages if password doesn't match criteria
         if(newPassword == null){ //check if new password is null or not
             response.sendRedirect("/forgotPassword");
             return;
