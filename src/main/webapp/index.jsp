@@ -16,11 +16,8 @@
             <a class="navbar-brand" href="/">Adlister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li></li>
-            <li><i class="fas fa-user"><!--something--></i></li>
-            <li><a href="/login">Login</a></li>
-            <li><i class="fas fa-user-plus"><!--something--></i></li>
-            <li><a href="/register">Register</a></li>
+            <li><a href="/login"><i class="fas fa-user">Login</i></a></li>
+            <li><a href="/register"><i class="fas fa-user-plus">Register</i></a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
