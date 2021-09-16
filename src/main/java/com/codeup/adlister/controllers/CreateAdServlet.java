@@ -31,19 +31,23 @@ public class CreateAdServlet extends HttpServlet {
         request.getSession().setAttribute("title", title);
         request.getSession().setAttribute("description", description);
 
-        boolean inputHasErrors = title.isEmpty()
-                || description.isEmpty();
-
-        if (inputHasErrors) {
-            response.sendRedirect("/ads/create");
+        //validate input is not null
+        if(title.isEmpty()){
+            setErrorMessageAndRedirect("Title cannot be empty", response, request);
             return;
         }
 
-            Ad ad = new Ad(
-                    user.getId(),
-                    request.getParameter("title"),
-                    request.getParameter("description")
-                    //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
+        if(description.isEmpty()){
+            setErrorMessageAndRedirect("Description cannot be empty", response, request);
+            return;
+        }
+
+        //create ad
+        Ad ad = new Ad(
+            user.getId(),
+            request.getParameter("title"),
+            request.getParameter("description")
+            //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
             );
 
             Long IDofNewAd = DaoFactory.getAdsDao().insert(ad);
@@ -69,4 +73,10 @@ public class CreateAdServlet extends HttpServlet {
             request.getSession().setAttribute("description", null);
             response.sendRedirect("/ads");
     }
+
+    protected void setErrorMessageAndRedirect(String errorMessage, HttpServletResponse response, HttpServletRequest request) throws IOException {
+        request.getSession().setAttribute("errorMessage", errorMessage);
+        response.sendRedirect("/ads/create");
+    }
+
 }
