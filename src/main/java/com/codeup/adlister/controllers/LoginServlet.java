@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 
         //set user attribute to recognized as logged in
         request.getSession().setAttribute("user", user);
-
+      
         //redirect user to previous page once logged in - CG
         if(redirect.equals("create")){
                 response.sendRedirect("/ads/create");
