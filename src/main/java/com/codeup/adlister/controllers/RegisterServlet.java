@@ -13,6 +13,10 @@ import java.io.IOException;
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
@@ -28,22 +32,22 @@ public class RegisterServlet extends HttpServlet {
 
         // validate input is not null and set error message
         if(username.isEmpty()){
-            setErrorMessageAndRedirect("Username can't be empty", response, request);
+            response.sendRedirect("/register?errorMessage=UsernameEmpty");
             return;
         }
 
         if(email.isEmpty()){
-            setErrorMessageAndRedirect("Email can't be empty", response, request);
+            response.sendRedirect("/register?errorMessage=EmailEmpty");
             return;
         }
 
         if(password.isEmpty()){
-            setErrorMessageAndRedirect("Password can't be empty", response, request);
+            response.sendRedirect("/register?errorMessage=PasswordEmpty");
             return;
         }
 
         if(!password.equals(passwordConfirmation)){
-            setErrorMessageAndRedirect("Passwords don't match", response, request);
+            response.sendRedirect("/register?errorMessage=MatchPassword");
             return;
         }
 
@@ -52,27 +56,22 @@ public class RegisterServlet extends HttpServlet {
 
         //Verify email address, email is correct format, password is correct format, if user already exists -BR
         if(DaoFactory.getUsersDao().check(user)){
-            setErrorMessageAndRedirect("Username already exists, pick a different one", response, request);
-            return;
-        }
-
-        if(DaoFactory.getUsersDao().emailDuplicates(user)){
-            setErrorMessageAndRedirect("An account with this username already exists", response, request);
-            //TODO little link to login instead?
+            response.sendRedirect("/register?errorMessage=UsernameDuplicate");
             return;
         }
 
         if(!DaoFactory.getUsersDao().emailInputIsValid(email)){
-            setErrorMessageAndRedirect("Please enter a valid email", response, request);
+            response.sendRedirect("/register?errorMessage=EmailInvalid");
+            return;
+        }
+
+        if(DaoFactory.getUsersDao().emailDuplicates(user)){
+            response.sendRedirect("/register?errorMessage=EmailDuplicate");
             return;
         }
 
         if(!DaoFactory.getUsersDao().passwordInputIsValid(password)){
-            setErrorMessageAndRedirect("Password must be between 5 and 15 characters, " +
-                    "contain at least one digit, one lower case character, one special character" +
-                    " and one upper case character" +
-                    "and not contain white space", response, request);
-            //TODO add more specific password error message
+            response.sendRedirect("/register?errorMessage=PasswordInvalid");
             return;
         }
 
@@ -84,10 +83,5 @@ public class RegisterServlet extends HttpServlet {
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
 
-    }
-
-    protected void setErrorMessageAndRedirect(String errorMessage, HttpServletResponse response, HttpServletRequest request) throws IOException {
-        request.getSession().setAttribute("errorMessage", errorMessage);
-        response.sendRedirect("/register");
     }
 }

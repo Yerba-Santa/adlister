@@ -14,6 +14,11 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
+
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login?redirect=create");
             return;
@@ -33,12 +38,12 @@ public class CreateAdServlet extends HttpServlet {
 
         //validate input is not null
         if(title.isEmpty()){
-            setErrorMessageAndRedirect("Title cannot be empty", response, request);
+            response.sendRedirect("/ads/create?errorMessage=TitleNull");
             return;
         }
 
         if(description.isEmpty()){
-            setErrorMessageAndRedirect("Description cannot be empty", response, request);
+            response.sendRedirect("/ads/create?errorMessage=DescriptionNull");
             return;
         }
 
@@ -71,12 +76,7 @@ public class CreateAdServlet extends HttpServlet {
             //clear title & description attribute Because worked and no longer want to be filled in -CG
             request.getSession().setAttribute("title", null);
             request.getSession().setAttribute("description", null);
+
             response.sendRedirect("/ads");
     }
-
-    protected void setErrorMessageAndRedirect(String errorMessage, HttpServletResponse response, HttpServletRequest request) throws IOException {
-        request.getSession().setAttribute("errorMessage", errorMessage);
-        response.sendRedirect("/ads/create");
-    }
-
 }
