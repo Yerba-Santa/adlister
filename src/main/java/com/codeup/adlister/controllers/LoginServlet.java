@@ -41,7 +41,9 @@ public class LoginServlet extends HttpServlet {
         }
 
         //set user attribute to recognized as logged in
+        //reset errorMessage to null so not shown
         request.getSession().setAttribute("user", user);
+        request.getSession().setAttribute("errorMessage", null);
       
         //redirect user to previous page once logged in - CG
         if(redirect.equals("create")){

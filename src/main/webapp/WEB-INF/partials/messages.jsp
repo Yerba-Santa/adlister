@@ -26,10 +26,8 @@
 </style>
 
 <c:if test="${errorMessage != null}">
-    <%--TODO: fix close button positioning --%>
     <div class="alert alert-danger">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <strong>Error! </strong>${errorMessage}
     </div>
-
 </c:if>

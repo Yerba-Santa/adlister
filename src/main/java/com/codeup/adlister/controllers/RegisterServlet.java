@@ -77,8 +77,10 @@ public class RegisterServlet extends HttpServlet {
         }
 
         //clear username & email attribute for sticky form -CG
+        // reset errorMessage to null so is not shown
         request.getSession().setAttribute("username", null);
         request.getSession().setAttribute("email", null);
+        request.getSession().setAttribute("errorMessage", null);
 
         //finalize inputting user, redirect to login
         DaoFactory.getUsersDao().insert(user);

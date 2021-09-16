@@ -69,8 +69,11 @@ public class CreateAdServlet extends HttpServlet {
             }
 
             //clear title & description attribute Because worked and no longer want to be filled in -CG
+            //also set errorMessage to null so will not show on anypage
             request.getSession().setAttribute("title", null);
             request.getSession().setAttribute("description", null);
+            request.getSession().setAttribute("errorMessage", null);
+
             response.sendRedirect("/ads");
     }
 
