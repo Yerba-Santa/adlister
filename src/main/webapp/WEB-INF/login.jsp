@@ -14,6 +14,7 @@
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
+            <a href="${pageContext.request.contextPath}/forgotUsername"><p>Forgot username?</p></a><%--Link to profile page - CG--%>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
