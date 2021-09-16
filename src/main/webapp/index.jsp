@@ -5,14 +5,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Welcome to my site!"/>
     </jsp:include>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body, h1, h2, h3, h4, h5, h6 {
-            font-family: "Raleway", sans-serif
-        }
-    </style>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
 <%--<jsp:include page="/WEB-INF/partials/navbar.jsp"/>--%>
@@ -20,11 +13,12 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="/ads">Adlister</a>
+            <a class="navbar-brand" href="/">Adlister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
+            <li><i class="fas fa-user"><!--something--></i></li>
             <li><a href="/login">Login</a></li>
-            <%--                    <li><a href="/logout">Logout</a></li>--%>
+            <li><i class="fas fa-user-plus"><!--something--></i></li>
             <li><a href="/register">Register</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
@@ -42,7 +36,7 @@
     <div class="search-bar">
         <form action="/ads/search" METHOD="POST">
             <input id="keyword" name="keyword" class="form-control" type="text" placeholder="What are you looking for?">
-            <button type="submit" class="btn btn-primary btn-block" value="Search">Search</button>
+            <button type="submit" class="btn btn-dark btn-block" value="Search">Search</button>
         </form>
     </div>
 
@@ -50,6 +44,18 @@
         <br>
         <br>
     </div>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container" id="categories-header">
+            <h3 >CATEGORIES</h3>
+            <span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Electronics & Media</a></span><span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Clothing</a></span>
+            <span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search"></a>Pets</span><span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a
+                href="/ads/search">Sporting Goods & Outdoors</a></span>
+            <span class="w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Vehicles</a></span>
+        </div>
+    </div>
+
+
 
     <footer class="w3-container w3-padding-32 w3-dark-grey">
         <div class="w3-row-padding">
@@ -76,14 +82,7 @@
 <%--                </ul>--%>
 <%--            </div>--%>
 
-            <div class="w3-third">
-                <h3>CATEGORIES</h3>
-                <p>
-                    <span class="w3-tag w3-black w3-margin-bottom">Electronics & Media</span><span class="w3-tag w3-grey w3-small w3-margin-bottom">Clothing</span>
-                    <span class="w3-tag w3-grey w3-small w3-margin-bottom">Pets</span><span class="w3-tag w3-grey w3-small w3-margin-bottom">Sporting Goods & Outdoors</span>
-                    <span class="w3-tag w3-grey w3-small w3-margin-bottom">Vehicles</span>
-                </p>
-            </div>
+
 
         </div>
     </footer>
