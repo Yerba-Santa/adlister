@@ -12,6 +12,7 @@
         <div class="col-md-6">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
+            <a href="/ads/updateads?ad_id=${ad.id}">update</a>
         </div>
     </c:forEach>
 

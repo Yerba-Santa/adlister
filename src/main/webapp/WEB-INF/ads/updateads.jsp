@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/ads/updateads.jsp">
+    <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Update your Ad" />
     </jsp:include>
 </head>
@@ -18,12 +18,13 @@
     <h1>Update your Ad</h1>
     <form action="/ads/updateads" method="post">
         <div class="form-group">
-            <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text">
+            <label for="updateTitle">Title</label>
+            <input id="updateTitle" name="updateTitle" class="form-control" type="text">
+            <input type="hidden" name="ad_id" value="${ad_id}">
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text"></textarea>
+            <label for="updateDescription">Description</label>
+            <textarea id="updateDescription" name="updateDescription" class="form-control" type="text"></textarea>
         </div>
         <input type="submit" class="btn btn-block btn-primary">
     </form>

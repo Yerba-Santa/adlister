@@ -26,7 +26,7 @@ public class CreateAdServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(
             user.getId(),
-            1,
+
             request.getParameter("title"),
             request.getParameter("description")
         );

@@ -17,6 +17,9 @@ public class UpdateAdsServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+        String ad_id = request.getParameter("ad_id");
+        request.setAttribute("ad_id", request.getParameter("ad_id"));
+
 
         request.getRequestDispatcher("/WEB-INF/ads/updateads.jsp")
                 .forward(request, response);
@@ -27,13 +30,11 @@ public class UpdateAdsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                user.getId(),
-                1,
-                request.getParameter("title"),
-                request.getParameter("description")
-        );
-        DaoFactory.getAdsDao().insert(ad);
+        String updateTitle = request.getParameter("updateTitle");
+        String updateDescription = request.getParameter("updateDescription");
+        Long updateID = Long.parseLong(request.getParameter("ad_id"));
+        Ad ad = new Ad(updateID, user.getId(),updateTitle, updateDescription);
+        DaoFactory.getAdsDao().update(ad);
         response.sendRedirect("/ads");
     }
 }
