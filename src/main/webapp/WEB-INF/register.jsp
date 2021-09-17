@@ -5,9 +5,6 @@
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../main.css">
 </head>
 <body>
@@ -44,7 +41,7 @@
                 <label for="confirm_password">Confirm Password</label>
                 <input id="confirm_password" name="confirm_password" class="form-control" type="password">
             </div>
-            <input type="submit" class="btn btn-primary btn-block">
+            <input type="submit" class="btn btn-dark btn-block">
         </form>
     </div>
 </body>

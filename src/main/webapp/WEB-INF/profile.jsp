@@ -12,9 +12,9 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-grey w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
-        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
+        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-white"
            title="close menu">
             <i class="fa fa-remove"></i>
         </a>
@@ -29,12 +29,12 @@
                 class="fa fa-th-large fa-fw w3-margin-right"></i>EDIT PROFILE</a>
     </div>
     <div class="w3-panel w3-large">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
+        <i class="fas fa-facebook-official w3-hover-opacity"></i>
+        <i class="fas fa-instagram w3-hover-opacity"></i>
+        <i class="fas fa-snapchat w3-hover-opacity"></i>
+        <i class="fas fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fas fa-twitter w3-hover-opacity"></i>
+        <i class="fas fa-linkedin w3-hover-opacity"></i>
     </div>
 </nav>
 
