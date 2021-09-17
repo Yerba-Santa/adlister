@@ -17,6 +17,10 @@ public class UpdateProfileServlet extends HttpServlet {
             return;
         }
 
+        User user = (User) request.getSession().getAttribute("user");
+        request.setAttribute("email", user.getEmail());
+        request.setAttribute("username", user.getUsername());
+
         request.getRequestDispatcher("/WEB-INF/users/update.jsp")
                 .forward(request, response);
 
