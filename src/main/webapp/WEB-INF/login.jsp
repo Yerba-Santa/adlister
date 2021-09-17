@@ -9,6 +9,9 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
+
+        <jsp:include page="/WEB-INF/partials/messages.jsp" />
+
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
             <div class="form-group">
@@ -22,6 +25,8 @@
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
             <input type="hidden" name="redirect" value="${redirect}">
         </form>
+
+        <p>Don't have an account? <a href="${pageContext.request.contextPath}/register">Create an Account!</a></p>
     </div>
 </body>
 </html>

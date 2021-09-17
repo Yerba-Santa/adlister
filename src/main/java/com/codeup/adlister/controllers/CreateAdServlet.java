@@ -14,6 +14,11 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
+
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login?redirect=create");
             return;
@@ -27,21 +32,29 @@ public class CreateAdServlet extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
 
-        boolean inputHasErrors = title.isEmpty()
-                || description.isEmpty();
+        //set attributes for page so register.jsp can register if not null - CG
+        request.getSession().setAttribute("title", title);
+        request.getSession().setAttribute("description", description);
 
-        if (inputHasErrors) {
-            response.sendRedirect("/ads/create");
-        } else {
+        //validate input is not null
+        if(title.isEmpty()){
+            response.sendRedirect("/ads/create?errorMessage=TitleNull");
+            return;
+        }
 
+        if(description.isEmpty()){
+            response.sendRedirect("/ads/create?errorMessage=DescriptionNull");
+            return;
+        }
 
-
-            Ad ad = new Ad(
-                    user.getId(),
-                    request.getParameter("title"),
-                    request.getParameter("description")
-                    //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
+        //create ad
+        Ad ad = new Ad(
+            user.getId(),
+            request.getParameter("title"),
+            request.getParameter("description")
+            //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
             );
+
             Long IDofNewAd = DaoFactory.getAdsDao().insert(ad);
             if (request.getParameter("clothing") != null) {
                 DaoFactory.getAdsDao().addCategory(IDofNewAd, 2L);
@@ -59,7 +72,11 @@ public class CreateAdServlet extends HttpServlet {
             if (request.getParameter("pets") != null) {
                 DaoFactory.getAdsDao().addCategory(IDofNewAd, 5L);
             }
+
+            //clear title & description attribute Because worked and no longer want to be filled in -CG
+            request.getSession().setAttribute("title", null);
+            request.getSession().setAttribute("description", null);
+
             response.sendRedirect("/ads");
-        }
     }
 }
