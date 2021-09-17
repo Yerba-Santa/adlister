@@ -17,7 +17,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarLoggedInContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/ads/create"><i class="fas fa-plus-circle">Create New Ad</i></a>
                 </li>
