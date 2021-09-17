@@ -17,9 +17,12 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
+
+    <jsp:include page="/WEB-INF/partials/messages.jsp" />
+
     <h1>Reset Password</h1>
 
-    <c:if test="${sessionScope.username == null}">
+    <c:if test="${sessionScope.sucess == null}">
         <form action="/forgotPassword" method="POST">
             <div class="form-group">
                 <label for="email">Enter email:</label>
@@ -29,12 +32,24 @@
                 <label for="username">Enter username:</label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
+
+           <c:if test="${sessionScope.confirmReset != null}" >
+               <div class="form-group">
+                   <label for="newPassword">Enter email:</label>
+                   <input id="newPassword" name="newPassword" class="form-control" type="password">
+               </div>
+               <div class="form-group">
+                   <label for="confirmNewPassword">Enter username:</label>
+                   <input id="confirmNewPassword" name="confirmNewPassword" class="form-control" type="password">
+               </div>
+           </c:if>
             <input type="submit" class="btn btn-primary btn-block" value="Submit">
         </form>
+
     </c:if>
 
 
-    <c:if test="${sessionScope.success != null}">
+    <c:if test="${sessionScope.passwordSuccess != null}">
         <h3>Password Successfully Reset!</h3>
     </c:if>
     <a href="${pageContext.request.contextPath}/login"><p>Return to Login</p></a>

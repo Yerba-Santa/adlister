@@ -17,6 +17,9 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
+
+        <jsp:include page="/WEB-INF/partials/messages.jsp" />
+
         <h1>Recover Username</h1>
         <form action="/forgotUsername" method="POST">
             <div class="form-group">

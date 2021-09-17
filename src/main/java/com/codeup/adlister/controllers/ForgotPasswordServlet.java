@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,54 +15,59 @@ import java.io.IOException;
 public class ForgotPasswordServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //if user is logged in, redirect to profile
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
+        String confirmReset = request.getParameter("confirmReset");
+        request.setAttribute("errorMessage", confirmReset);
+
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
         }
+
         request.getRequestDispatcher("/WEB-INF/forgotPassword.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
         String username = request.getParameter("username");
-        String newPassword = request.getParameter("password");
-        String confirmNewPassword = request.getParameter("confirmPassword");
+        String newPassword = request.getParameter("newPassword");
+        String confirmNewPassword = request.getParameter("confirmNewPassword");
+        String confirmReset = request.getParameter("confirmReset");
 
         User user = DaoFactory.getUsersDao().findByEmail(email);
 
-        //checks if user exists
-        //TODO: Error Message Username does not exist/registered
-        if(user == null){
-            response.sendRedirect("/forgotPassword");
+        //check if username and email match & if username does not exist- a lil security not a lot lol
+        if(user != DaoFactory.getUsersDao().findByEmail(username) || user == null){
+            response.sendRedirect("/forgotPassword?errorMessage=EmailUsernameConflict");
             return;
         }
 
-        //check if username and email match - a lil security not a lot lol
-        //TODO: Error Message if email doesn't match username
-        if(user != DaoFactory.getUsersDao().findByEmail(username)){
-            response.sendRedirect("/forgotPassword");
+        if(newPassword.isEmpty()){ //check if pw is empty
+            response.sendRedirect("/forgotPassword?errorMessage=PasswordEmpty");
+        }
+
+        //if password form isn't visible, redirect to be visible
+        if(confirmReset == null){
+            response.sendRedirect("/forgotPassword#?confirmReset=true");
+        }
+
+        if(!(newPassword.equals(confirmNewPassword))){ //check if new pw matches confirmPassword
+            response.sendRedirect("/forgotPassword#?errorMessage=MatchPassword");
             return;
         }
 
-        //TODO: Error Message if password is null
-        //TODO: Error message & if statement for password not matching criteria
-        //TODO: error message is passwords don't match
-        //TODO: Error Messages if password doesn't match criteria
-        if(newPassword == null){ //check if new password is null or not
-            response.sendRedirect("/forgotPassword");
+        if(!DaoFactory.getUsersDao().passwordInputIsValid(newPassword)){ //check if new pw match criteria
+            response.sendRedirect("/forgotPassword?errorMessage=PasswordInvalid");
             return;
-        }
-        else if(!(newPassword.equals(confirmNewPassword))){ //check if new password matches confirmPassword
-            response.sendRedirect("/forgotPassword");
-            return;
-        }
-        else{
-            //TODO reset password information - ASK FOR HELP
-            //can use setters for
-            user.setPassword(newPassword);
         }
 
-        request.getSession().setAttribute("username", user.getUsername());
+        String hash = BCrypt.hashpw(newPassword, BCrypt.gensalt()); //hashes password
+        user.setPassword(hash); //sets new hashed password
+
+        request.getSession().setAttribute("passwordSuccess", true);
         response.sendRedirect("/forgotPassword");
     }
 }

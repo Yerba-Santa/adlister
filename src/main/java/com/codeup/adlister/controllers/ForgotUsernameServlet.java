@@ -14,10 +14,15 @@ import java.io.IOException;
 public class ForgotUsernameServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //if user is logged in, redirect to profile
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
         }
+
         request.getRequestDispatcher("/WEB-INF/forgotUsername.jsp").forward(request, response);
     }
 
@@ -26,7 +31,7 @@ public class ForgotUsernameServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByEmail(email);
 
         if(user == null){
-            response.sendRedirect("/forgotUsername");
+            response.sendRedirect("/forgotUsername?errorMessage=UsernameEmailConflict");
             return;
         }
 
