@@ -55,7 +55,7 @@ public class MySQLAdsDao implements Ads{
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement("SELECT * FROM ads where user_id = ?");
-            stmt.setLong(1,id);
+            stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
@@ -78,8 +78,51 @@ public class MySQLAdsDao implements Ads{
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
+    }
+
+    public void update(Ad ad) {
+        String query = "update ads set title = ?, description = ? where id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating ad", e);
+        }
+    }
+//
+//    @Override
+//    public List<Ad> getByUserId(Long id) {
+//        try {
+//            String Query = "SELECT * from ads where user_id = ?" ;
+//            PreparedStatement stmt = connection.prepareStatement(Query);
+//            stmt.setLong(1, id);
+////            stmt.setString(2, ad.getTitle());
+////            stmt.setString(3, ad.getDescription());
+//            return createAdsFromResults(stmt.executeQuery());
+////            ResultSet rs = stmt.getGeneratedKeys();
+////            rs.next();
+////            return rs.getLong(1);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error creating a new ad.", e);
+//        }
+//    }
+
+    public void delete(long id) {
+        String Query = "DELETE FROM ads WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(Query);
+            stmt.setLong(1, id);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by username", e);
+        }
 
     }
+
 //
 //    @Override
 //    public List<Ad> getByUserId(Long id) {
@@ -167,5 +210,4 @@ public class MySQLAdsDao implements Ads{
         }
 
     }
-
 }
