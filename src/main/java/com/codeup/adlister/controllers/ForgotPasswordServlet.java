@@ -19,7 +19,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         String errorMessage = request.getParameter("errorMessage");
         request.setAttribute("errorMessage", errorMessage);
 
-        String confirmReset = request.getParameter("confirmReset");
+        String confirmReset = (String) request.getAttribute("confirmRest");
         request.setAttribute("confirmReset", confirmReset);
 
         if (request.getSession().getAttribute("user") != null) {
@@ -35,29 +35,42 @@ public class ForgotPasswordServlet extends HttpServlet {
         String username = request.getParameter("username");
         String newPassword = request.getParameter("newPassword");
         String confirmNewPassword = request.getParameter("confirmNewPassword");
-        String confirmReset = request.getParameter("confirmReset");
+        request.getSession().setAttribute("passwordSuccess", null);
 
-        User user = DaoFactory.getUsersDao().findByUsername(username);
+        //check if username or email are null
+        if(email.isEmpty() || username.isEmpty()) {
+            response.sendRedirect("/forgotPassword?errorMessage=EmailUsernameConflict");
+            return;
+        }
+
+        User user1 = DaoFactory.getUsersDao().findByUsername(username);
+        User user2 = DaoFactory.getUsersDao().findByEmail(email);
+
+        String email1 = user1.getEmail();
+        String email2 = user2.getEmail();
 
         //check if username and email match & if username does not exist- a lil security not a lot lol
-        //make method, checking shallow refernce (look up), check if
-        //TODO why not working
-        if(user != DaoFactory.getUsersDao().findByEmail(email) && user != null){
+        if(!email1.equals(email2)){
             response.sendRedirect("/forgotPassword?errorMessage=EmailUsernameConflict");
+            return;
+        }
+
+        //if password form isn't visible, redirect to be visible
+        if(request.getSession().getAttribute("username") == null) {
+            request.getSession().setAttribute("username", username);
+            request.getSession().setAttribute("email", email);
+            request.getSession().setAttribute("confirmReset", "true");
+            response.sendRedirect("/forgotPassword");
             return;
         }
 
         if(newPassword.isEmpty()){ //check if pw is empty
             response.sendRedirect("/forgotPassword?errorMessage=PasswordEmpty");
-        }
-
-        //if password form isn't visible, redirect to be visible
-        if(confirmReset == null){
-            response.sendRedirect("/forgotPassword?confirmReset=true");
+            return;
         }
 
         if(!(newPassword.equals(confirmNewPassword))){ //check if new pw matches confirmPassword
-            response.sendRedirect("/forgotPassword#?errorMessage=MatchPassword");
+            response.sendRedirect("/forgotPassword?errorMessage=MatchPassword");
             return;
         }
 
@@ -67,9 +80,12 @@ public class ForgotPasswordServlet extends HttpServlet {
         }
 
         String hash = BCrypt.hashpw(newPassword, BCrypt.gensalt()); //hashes password
-        user.setPassword(hash); //sets new hashed password
+        user1.setPassword(hash); //sets new hashed password
 
         request.getSession().setAttribute("passwordSuccess", true);
+        request.getSession().setAttribute("username", null);
+        request.getSession().setAttribute("email", null);
+        request.getSession().setAttribute("confirmReset", null);
         response.sendRedirect("/forgotPassword");
     }
 }

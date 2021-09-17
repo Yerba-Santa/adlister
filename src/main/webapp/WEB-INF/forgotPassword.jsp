@@ -22,29 +22,40 @@
 
     <h1>Reset Password</h1>
 
-    <c:if test="${sessionScope.sucess == null}">
+    <c:if test="${sessionScope.passwordSuccess == null}">
         <form action="/forgotPassword" method="POST">
 
             <div class="form-group">
                 <label for="username">Enter username:</label>
-                <input id="username" name="username" class="form-control" type="text">
+                <c:if test="${sessionScope.username != null}">
+                    <input id="username" name="username" class="form-control" type="text" value="${sessionScope.username}">
+                </c:if>
+                <c:if test="${sessionScope.username == null}">
+                    <input id="username" name="username" class="form-control" type="text">
+                </c:if>
             </div>
 
             <div class="form-group">
                 <label for="email">Enter email:</label>
-                <input id="email" name="email" class="form-control" type="text">
+                <c:if test="${sessionScope.email != null}">
+                    <input id="email" name="email" class="form-control" type="text" value="${sessionScope.email}">
+                </c:if>
+                <c:if test="${sessionScope.email == null}">
+                    <input id="email" name="email" class="form-control" type="text">
+                </c:if>
             </div>
 
            <c:if test="${sessionScope.confirmReset != null}" >
                <div class="form-group">
-                   <label for="newPassword">Enter email:</label>
+                   <label for="newPassword">Enter New Password:</label>
                    <input id="newPassword" name="newPassword" class="form-control" type="password">
                </div>
                <div class="form-group">
-                   <label for="confirmNewPassword">Enter username:</label>
+                   <label for="confirmNewPassword">Confirm New Password:</label>
                    <input id="confirmNewPassword" name="confirmNewPassword" class="form-control" type="password">
                </div>
            </c:if>
+
             <input type="submit" class="btn btn-primary btn-block" value="Submit">
         </form>
     </c:if>

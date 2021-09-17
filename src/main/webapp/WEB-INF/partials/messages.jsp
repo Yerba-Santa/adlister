@@ -67,13 +67,6 @@
     </div>
   </c:when>
 
-  <c:when test="${errorMessage == 'MatchPassword'}">
-    <div class="alert alert-danger">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      <strong>Error! Passwords don't match</strong>
-    </div>
-  </c:when>
-
   <c:when test="${errorMessage == 'UsernameDuplicate'}">
     <div class="alert alert-danger">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -130,12 +123,12 @@
     </div>
   </c:when>
 
-
   <c:when test="${errorMessage == 'EmailUsernameConflict'}">
     <div class="alert alert-danger">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       <strong>Error! No account found with this email and username</strong>
     </div>
   </c:when>
+
     <c:otherwise></c:otherwise>
 </c:choose>
