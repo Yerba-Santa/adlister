@@ -10,17 +10,27 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Ad Info" />
+        <jsp:param name="title" value="Ad Info"/>
     </jsp:include>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <h1>${ad.title}</h1>
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<div class="card" style="width: 18rem;">
     <p>${ad.description}</p>
 
     <h2>Contact Information:</h2>
     <a href="${pageContext.request.contextPath}/profile"><h3>User: ${user.username}</h3></a><%--Link to profile page - CG--%>
     <h4>Email: ${user.email}</h4>
+</div>
+
 
 </body>
 </html>
+
+
+<%--<p>${ad.description}</p>--%>
+
+<%--<h2>Contact Information:</h2>--%>
+<%--<a href="${pageContext.request.contextPath}/profile"><h3>User: ${user.username}</h3></a>&lt;%&ndash;Link to profile page - CG&ndash;%&gt;--%>
+<%--<h4>Email: ${user.email}</h4>--%>
