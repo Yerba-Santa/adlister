@@ -24,13 +24,15 @@
 
     <c:if test="${sessionScope.sucess == null}">
         <form action="/forgotPassword" method="POST">
-            <div class="form-group">
-                <label for="email">Enter email:</label>
-                <input id="email" name="email" class="form-control" type="text">
-            </div>
+
             <div class="form-group">
                 <label for="username">Enter username:</label>
                 <input id="username" name="username" class="form-control" type="text">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Enter email:</label>
+                <input id="email" name="email" class="form-control" type="text">
             </div>
 
            <c:if test="${sessionScope.confirmReset != null}" >

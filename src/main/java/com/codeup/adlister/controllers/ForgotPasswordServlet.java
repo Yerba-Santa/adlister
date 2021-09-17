@@ -20,7 +20,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         request.setAttribute("errorMessage", errorMessage);
 
         String confirmReset = request.getParameter("confirmReset");
-        request.setAttribute("errorMessage", confirmReset);
+        request.setAttribute("confirmReset", confirmReset);
 
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
@@ -37,10 +37,11 @@ public class ForgotPasswordServlet extends HttpServlet {
         String confirmNewPassword = request.getParameter("confirmNewPassword");
         String confirmReset = request.getParameter("confirmReset");
 
-        User user = DaoFactory.getUsersDao().findByEmail(email);
+        User user = DaoFactory.getUsersDao().findByUsername(username);
 
         //check if username and email match & if username does not exist- a lil security not a lot lol
-        if(user != DaoFactory.getUsersDao().findByEmail(username) || user == null){
+        //TODO why not working
+        if(user != DaoFactory.getUsersDao().findByEmail(email) && user != null){
             response.sendRedirect("/forgotPassword?errorMessage=EmailUsernameConflict");
             return;
         }
@@ -51,7 +52,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 
         //if password form isn't visible, redirect to be visible
         if(confirmReset == null){
-            response.sendRedirect("/forgotPassword#?confirmReset=true");
+            response.sendRedirect("/forgotPassword?confirmReset=true");
         }
 
         if(!(newPassword.equals(confirmNewPassword))){ //check if new pw matches confirmPassword
