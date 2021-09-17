@@ -78,7 +78,6 @@ public class MySQLAdsDao implements Ads{
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
-
     }
 
     public void update(Ad ad) {
@@ -94,6 +93,23 @@ public class MySQLAdsDao implements Ads{
             throw new RuntimeException("Error updating ad", e);
         }
     }
+//
+//    @Override
+//    public List<Ad> getByUserId(Long id) {
+//        try {
+//            String Query = "SELECT * from ads where user_id = ?" ;
+//            PreparedStatement stmt = connection.prepareStatement(Query);
+//            stmt.setLong(1, id);
+////            stmt.setString(2, ad.getTitle());
+////            stmt.setString(3, ad.getDescription());
+//            return createAdsFromResults(stmt.executeQuery());
+////            ResultSet rs = stmt.getGeneratedKeys();
+////            rs.next();
+////            return rs.getLong(1);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error creating a new ad.", e);
+//        }
+//    }
 
     public void delete(long id) {
         String Query = "DELETE FROM ads WHERE id = ?";
