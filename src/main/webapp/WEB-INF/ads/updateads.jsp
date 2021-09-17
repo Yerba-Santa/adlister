@@ -14,6 +14,7 @@
     </jsp:include>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <div class="container">
     <h1>Update your Ad</h1>
     <form action="/ads/updateads" method="post">
@@ -26,7 +27,7 @@
             <label for="updateDescription">Description</label>
             <textarea id="updateDescription" name="updateDescription" class="form-control" type="text"></textarea>
         </div>
-        <input type="submit" class="btn btn-block btn-primary">
+        <input type="submit" class="btn btn-block btn-dark">
     </form>
 </div>
 

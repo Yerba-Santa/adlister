@@ -6,11 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-    <title>Title</title>
+    <head>
+        <jsp:include page="/WEB-INF/partials/head.jsp">
+            <jsp:param name="title" value="Edit Profile"/>
+        </jsp:include>
+        <link rel="stylesheet" href="/main.css">
+    </head>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <div class="container">
     <h1> Update your Profile</h1>
     <form action="/user/update" method="post">
@@ -24,7 +32,7 @@
                 <label for="exampleInputPassword1">Username</label>
                 <input type="text" name="username" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-block btn-dark">Submit</button>
         </form>
     </form>
 </div>
