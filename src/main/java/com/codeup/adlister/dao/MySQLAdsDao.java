@@ -51,6 +51,18 @@ public class MySQLAdsDao implements Ads{
         }
     }
 
+    public List<Ad> getByUserId(Long id) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads where user_id = ?");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
     @Override
     public Long insert(Ad ad) {
         try {
@@ -67,6 +79,67 @@ public class MySQLAdsDao implements Ads{
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+    public void update(Ad ad) {
+        String query = "update ads set title = ?, description = ? where id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating ad", e);
+        }
+    }
+//
+//    @Override
+//    public List<Ad> getByUserId(Long id) {
+//        try {
+//            String Query = "SELECT * from ads where user_id = ?" ;
+//            PreparedStatement stmt = connection.prepareStatement(Query);
+//            stmt.setLong(1, id);
+////            stmt.setString(2, ad.getTitle());
+////            stmt.setString(3, ad.getDescription());
+//            return createAdsFromResults(stmt.executeQuery());
+////            ResultSet rs = stmt.getGeneratedKeys();
+////            rs.next();
+////            return rs.getLong(1);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error creating a new ad.", e);
+//        }
+//    }
+
+    public void delete(long id) {
+        String Query = "DELETE FROM ads WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(Query);
+            stmt.setLong(1, id);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by username", e);
+        }
+
+    }
+
+//
+//    @Override
+//    public List<Ad> getByUserId(Long id) {
+//        try {
+//            String Query = "SELECT * from ads where user_id = ?" ;
+//            PreparedStatement stmt = connection.prepareStatement(Query);
+//            stmt.setLong(1, id);
+////            stmt.setString(2, ad.getTitle());
+////            stmt.setString(3, ad.getDescription());
+//            return createAdsFromResults(stmt.executeQuery());
+////            ResultSet rs = stmt.getGeneratedKeys();
+////            rs.next();
+////            return rs.getLong(1);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error creating a new ad.", e);
+//        }
+//    }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
@@ -119,6 +192,11 @@ public class MySQLAdsDao implements Ads{
         return ads;
     }
 
+//    To do
+//    Update method
+//    create ad servlet
+//    Inside servlet create a do get and do post form (Make sure do get provide the information of ad user is trying to edit)
+//    Create an update Ad.jsp (create a form)
     //Add category -BR
     public void addCategory(Long ad_ID, Long category_ID){
         try {
@@ -132,5 +210,4 @@ public class MySQLAdsDao implements Ads{
         }
 
     }
-
 }

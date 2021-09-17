@@ -13,6 +13,10 @@ import java.io.IOException;
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
@@ -22,18 +26,28 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
-        //set attributes for page so register.jsp can register if not null - CG
+        //set attributes for page so register.jsp can display if not null - CG
         request.getSession().setAttribute("username", username);
         request.getSession().setAttribute("email", email);
 
-        // validate input
-        boolean inputHasErrors = username.isEmpty()
-                || email.isEmpty()
-                || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
+        // validate input is not null and set error message
+        if(username.isEmpty()){
+            response.sendRedirect("/register?errorMessage=UsernameEmpty");
+            return;
+        }
 
-        if (inputHasErrors) {
-            response.sendRedirect("/register");
+        if(email.isEmpty()){
+            response.sendRedirect("/register?errorMessage=EmailEmpty");
+            return;
+        }
+
+        if(password.isEmpty()){
+            response.sendRedirect("/register?errorMessage=PasswordEmpty");
+            return;
+        }
+
+        if(!password.equals(passwordConfirmation)){
+            response.sendRedirect("/register?errorMessage=MatchPassword");
             return;
         }
 
@@ -41,33 +55,33 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, email, password);
 
         //Verify email address, email is correct format, password is correct format, if user already exists -BR
-        boolean verificationError = DaoFactory.getUsersDao().check(user) ||
-                                    DaoFactory.getUsersDao().emailDuplicates(user) ||
-                                    !DaoFactory.getUsersDao().emailInputIsValid(email) ||
-                                    !DaoFactory.getUsersDao().passwordInputIsValid(password);
-
-        if(verificationError){
-            response.sendRedirect("/register");
+        if(DaoFactory.getUsersDao().check(user)){
+            response.sendRedirect("/register?errorMessage=UsernameDuplicate");
             return;
         }
 
-       /*
-       Call passwordInputIsValid to check if password is in correct format:
-       It contains at least 5 characters and at most 15 characters.
-       It contains at least one digit.
-       It contains at least one upper case alphabet.
-       It contains at least one lower case alphabet.
-       It contains at least one special character which includes !@#$%&*()-+=^.
-       It doesn’t contain any white space.
-        */
+        if(!DaoFactory.getUsersDao().emailInputIsValid(email)){
+            response.sendRedirect("/register?errorMessage=EmailInvalid");
+            return;
+        }
 
-        //clear username & email attribute? Because worked and no longer want to be filled in -CG
+        if(DaoFactory.getUsersDao().emailDuplicates(user)){
+            response.sendRedirect("/register?errorMessage=EmailDuplicate");
+            return;
+        }
+
+        if(!DaoFactory.getUsersDao().passwordInputIsValid(password)){
+            response.sendRedirect("/register?errorMessage=PasswordInvalid");
+            return;
+        }
+
+        //clear username & email attribute for sticky form -CG
         request.getSession().setAttribute("username", null);
         request.getSession().setAttribute("email", null);
 
+        //finalize inputting user, redirect to login
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
 
     }
-
 }

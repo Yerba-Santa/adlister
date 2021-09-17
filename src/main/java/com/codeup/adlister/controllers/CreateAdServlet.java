@@ -14,6 +14,11 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
+
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login?redirect=create");
             return;
@@ -31,19 +36,23 @@ public class CreateAdServlet extends HttpServlet {
         request.getSession().setAttribute("title", title);
         request.getSession().setAttribute("description", description);
 
-        boolean inputHasErrors = title.isEmpty()
-                || description.isEmpty();
-
-        if (inputHasErrors) {
-            response.sendRedirect("/ads/create");
+        //validate input is not null
+        if(title.isEmpty()){
+            response.sendRedirect("/ads/create?errorMessage=TitleNull");
             return;
         }
 
-            Ad ad = new Ad(
-                    user.getId(),
-                    request.getParameter("title"),
-                    request.getParameter("description")
-                    //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
+        if(description.isEmpty()){
+            response.sendRedirect("/ads/create?errorMessage=DescriptionNull");
+            return;
+        }
+
+        //create ad
+        Ad ad = new Ad(
+            user.getId(),
+            request.getParameter("title"),
+            request.getParameter("description")
+            //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
             );
 
             Long IDofNewAd = DaoFactory.getAdsDao().insert(ad);
@@ -67,6 +76,7 @@ public class CreateAdServlet extends HttpServlet {
             //clear title & description attribute Because worked and no longer want to be filled in -CG
             request.getSession().setAttribute("title", null);
             request.getSession().setAttribute("description", null);
+
             response.sendRedirect("/ads");
     }
 }
