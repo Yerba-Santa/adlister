@@ -6,6 +6,8 @@ body, h1, h2, h3, h4, h5, h6 {font-family: "Raleway", sans-serif}
 .categories-container {display: flex; flex-direction: column}
 .category {display: flex; justify-content: space-evenly}
 #profile-logo {display: flex; justify-content: center}
+.users-name {display: flex; justify-content: center}
+.card {display: flex; justify-content: space-evenly; flex-direction: column}
 
 
 
