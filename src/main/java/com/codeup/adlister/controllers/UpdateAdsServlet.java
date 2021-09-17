@@ -17,12 +17,13 @@ public class UpdateAdsServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        String ad_id = request.getParameter("ad_id");
+        long ad_id = Long.parseLong(request.getParameter("ad_id"));
+        Ad ad = DaoFactory.getAdsDao().findById(ad_id);
+
         request.setAttribute("ad_id", request.getParameter("ad_id"));
-
-
-        request.getRequestDispatcher("/WEB-INF/ads/updateads.jsp")
-                .forward(request, response);
+        request.setAttribute("title", ad.getTitle());
+        request.setAttribute("description", ad.getDescription());
+        request.getRequestDispatcher("/WEB-INF/ads/updateads.jsp").forward(request, response);
 
     }
 

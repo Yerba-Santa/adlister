@@ -49,8 +49,6 @@
     </div>
 </c:forEach>
 
-<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
