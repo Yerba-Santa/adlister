@@ -24,21 +24,21 @@
             <li class="nav-item">
                 <a class="nav-link" href="/register"><i class="fas fa-user-plus">Register</i></a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    View Ads
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/ads">All</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Electronics & Media</a>
-                    <a class="dropdown-item" href="#">Clothing</a>
-                    <a class="dropdown-item" href="#">Pets</a>
-                    <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>
-                    <a class="dropdown-item" href="#">Vehicles</a>
-                </div>
-            </li>
+<%--            <li class="nav-item dropdown">--%>
+<%--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--%>
+<%--                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+<%--                    View Ads--%>
+<%--                </a>--%>
+<%--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
+<%--                    <a class="dropdown-item" href="/ads">All</a>--%>
+<%--                    <div class="dropdown-divider"></div>--%>
+<%--                    <a class="dropdown-item" href="#">Electronics & Media</a>--%>
+<%--                    <a class="dropdown-item" href="#">Clothing</a>--%>
+<%--                    <a class="dropdown-item" href="#">Pets</a>--%>
+<%--                    <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>--%>
+<%--                    <a class="dropdown-item" href="#">Vehicles</a>--%>
+<%--                </div>--%>
+<%--            </li>--%>
         </ul>
     </div>
 </nav>
@@ -66,6 +66,7 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="categories-container" id="categories-header">
+            <h3>SEARCH </h3>
             <h3><i class="fa fa-hashtag" aria-hidden="true">CATEGORIES</i></h3>
             <div class="category">
                 <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Electronics & Media</a></span><span
