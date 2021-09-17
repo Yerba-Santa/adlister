@@ -17,7 +17,5 @@ public class DeleteAdsServlet extends HttpServlet {
         DaoFactory.getAdsDao().removeCategories(id);
         DaoFactory.getAdsDao().delete(id);
         response.sendRedirect("/profile");
-
-
     }
 }
