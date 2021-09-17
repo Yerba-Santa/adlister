@@ -35,7 +35,7 @@
             </c:if>
         </div>
 
-        <div class="form-group">
+        <div class="select-category form-group">
             <div class="categories">
                 <label for="electronics-media">Electronics/Media</label>
                 <input id="electronics-media" name="electronics-media" type="checkbox">
@@ -52,7 +52,7 @@
                 <label for="pets">Pets</label>
                 <input id="pets" name="pets" type="checkbox">
             </div>
-            <input type="submit" class="btn btn-block btn-primary">
+            <input type="submit" class="btn btn-block btn-dark">
             <input type="hidden" name="redirect" value="${redirect}">
         </div>
     </form>

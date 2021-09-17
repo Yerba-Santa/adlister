@@ -70,6 +70,18 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
+       /*
+       Call passwordInputIsValid to check if password is in correct format:
+       It contains at least 5 characters and at most 15 characters.
+       It contains at least one digit.
+       It contains at least one upper case alphabet.
+       It contains at least one lower case alphabet.
+       It contains at least one special character which includes !@#$%&*()-+=^.
+       It doesn’t contain any white space.
+        */
+
+        //Call passwordInputIsValid to check if password is in correct format - BR
+
         if(!DaoFactory.getUsersDao().passwordInputIsValid(password)){
             response.sendRedirect("/register?errorMessage=PasswordInvalid");
             return;

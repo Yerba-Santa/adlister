@@ -5,31 +5,92 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile"/>
     </jsp:include>
+    <link rel="stylesheet" href="/main.css">
+
 </head>
 <body>
-
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-<c:forEach var="ad" items="${ads}">
-    <div class="col-md-6">
-        <h2>${ad.title}</h2>
-        <p>${ad.description}</p>
-        <a href="/ads/updateads?ad_id=${ad.id}" class="btn btn-success">Update</a>
-        <a href="/ads/delete?ad_id=${ad.id}" class="btn btn-danger">Delete</a>
 
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
-        </div>
-    </c:forEach>
-
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
+           title="close menu">
+            <i class="fa fa-remove"></i>
+        </a>
+        <br><br>
+        <h4 class="users-name"><b>${sessionScope.user.username}</b></h4>
     </div>
-</c:forEach>
+    <br>
+    <div class="w3-bar-block">
+        <i class="fas fa-user fa-5x" id="profile-logo"></i>
+        <br>
+        <a href="${pageContext.request.contextPath}/user/update" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
+                class="fa fa-th-large fa-fw w3-margin-right"></i>EDIT PROFILE</a>
+    </div>
+    <div class="w3-panel w3-large">
+        <i class="fas fa-facebook-official w3-hover-opacity"></i>
+        <i class="fas fa-instagram w3-hover-opacity"></i>
+        <i class="fas fa-snapchat w3-hover-opacity"></i>
+        <i class="fas fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fas fa-twitter w3-hover-opacity"></i>
+        <i class="fas fa-linkedin w3-hover-opacity"></i>
+    </div>
+</nav>
 
-<div class="container">
-    <h1>Welcome, ${sessionScope.user.username}!</h1>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+     title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px">
+
+
+    <!-- Header -->
+    <header id="portfolio">
+        <a href="#"></a>
+        <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i
+                class="fa fa-bars"></i></span>
+        <div class="w3-container">
+            <h1><b>Welcome!</b></h1>
+        </div>
+    </header>
+
+    <!-- First Photo Grid-->
+    <div class="w3-row-padding">
+        <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
+        <h2>Here are all your ads:</h2>
+            <c:forEach var="ad" items="${ads}">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${ad.title}</h5>
+                        <p>${ad.description}</p>
+                        <a href="${pageContext.request.contextPath}/ads/updateads?ad_id=${ad.id}" class="btn btn-sm btn-success">Update</a>
+                        <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+
+
+    <div class="w3-black w3-center w3-padding-24">Powered by Yerba-Santa</div>
+
+    <!-- End page content -->
 </div>
+
+
+<script>
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+</script>
 
 </body>
 </html>
