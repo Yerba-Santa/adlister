@@ -46,6 +46,8 @@
                 </div>
             </div>
         </div>
+    </div>
+</c:forEach>
 
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
