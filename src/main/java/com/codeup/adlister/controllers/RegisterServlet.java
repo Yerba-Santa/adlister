@@ -13,6 +13,10 @@ import java.io.IOException;
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
@@ -22,20 +26,62 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
-        // validate input
-        boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+        //set attributes for page so register.jsp can display if not null - CG
+        request.getSession().setAttribute("username", username);
+        request.getSession().setAttribute("email", email);
 
-        if (inputHasErrors) {
-            response.sendRedirect("/register");
+        // validate input is not null and set error message
+        if(username.isEmpty()){
+            response.sendRedirect("/register?errorMessage=UsernameEmpty");
+            return;
+        }
+
+        if(email.isEmpty()){
+            response.sendRedirect("/register?errorMessage=EmailEmpty");
+            return;
+        }
+
+        if(password.isEmpty()){
+            response.sendRedirect("/register?errorMessage=PasswordEmpty");
+            return;
+        }
+
+        if(!password.equals(passwordConfirmation)){
+            response.sendRedirect("/register?errorMessage=MatchPassword");
             return;
         }
 
         // create and save a new user
         User user = new User(username, email, password);
+
+        //Verify email address, email is correct format, password is correct format, if user already exists -BR
+        if(DaoFactory.getUsersDao().check(user)){
+            response.sendRedirect("/register?errorMessage=UsernameDuplicate");
+            return;
+        }
+
+        if(!DaoFactory.getUsersDao().emailInputIsValid(email)){
+            response.sendRedirect("/register?errorMessage=EmailInvalid");
+            return;
+        }
+
+        if(DaoFactory.getUsersDao().emailDuplicates(user)){
+            response.sendRedirect("/register?errorMessage=EmailDuplicate");
+            return;
+        }
+
+        if(!DaoFactory.getUsersDao().passwordInputIsValid(password)){
+            response.sendRedirect("/register?errorMessage=PasswordInvalid");
+            return;
+        }
+
+        //clear username & email attribute for sticky form -CG
+        request.getSession().setAttribute("username", null);
+        request.getSession().setAttribute("email", null);
+
+        //finalize inputting user, redirect to login
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
+
     }
 }
