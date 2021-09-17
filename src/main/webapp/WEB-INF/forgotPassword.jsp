@@ -47,7 +47,6 @@
            </c:if>
             <input type="submit" class="btn btn-primary btn-block" value="Submit">
         </form>
-
     </c:if>
 
 

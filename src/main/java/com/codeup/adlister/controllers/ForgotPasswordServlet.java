@@ -40,6 +40,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
         //check if username and email match & if username does not exist- a lil security not a lot lol
+        //make method, checking shallow refernce (look up), check if
         //TODO why not working
         if(user != DaoFactory.getUsersDao().findByEmail(email) && user != null){
             response.sendRedirect("/forgotPassword?errorMessage=EmailUsernameConflict");
