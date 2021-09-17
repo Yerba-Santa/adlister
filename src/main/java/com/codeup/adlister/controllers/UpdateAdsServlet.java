@@ -36,6 +36,6 @@ public class UpdateAdsServlet extends HttpServlet {
         long updateID = Long.parseLong(request.getParameter("ad_id"));
         Ad ad = new Ad(updateID, user.getId(),updateTitle, updateDescription);
         DaoFactory.getAdsDao().update(ad);
-        response.sendRedirect("/ads");
+        response.sendRedirect("/ads/show?id=" + updateID);
     }
 }
