@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MySQLUsersDao implements Users {
-    private Connection connection;
+    private final Connection connection;
 
     public MySQLUsersDao(Config config) {
         try {

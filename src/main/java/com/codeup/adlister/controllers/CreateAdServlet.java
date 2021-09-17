@@ -50,6 +50,7 @@ public class CreateAdServlet extends HttpServlet {
         //create ad
         Ad ad = new Ad(
             user.getId(),
+            1,
             request.getParameter("title"),
             request.getParameter("description")
             //ADDED CHECKBOXES FOR CATEGORIES ALREADY ADDED TO TABLE
