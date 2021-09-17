@@ -13,13 +13,17 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
-    <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <a href="${pageContext.request.contextPath}/ads/show?id=${ad.id}"> <%-- Creates link to show.jsp -CG --%>
-                <h2>${ad.title}</h2></a>
-            <p>${ad.description}</p>
-        </div>
-    </c:forEach>
+    <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
+        <h2>Here are all your ads:</h2>
+        <c:forEach var="ad" items="${ads}">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${ad.title}</h5>
+                    <p>${ad.description}</p>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
 </div>
 
 </body>
