@@ -22,22 +22,25 @@
                     <a class="nav-link" href="/ads/create"><i class="fas fa-plus-circle">Create New Ad</i></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out">Logout</i></a>
+                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt">Logout</i></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarLoggedInDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        View Ads
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/ads">All</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Electronics & Media</a>
-                        <a class="dropdown-item" href="#">Clothing</a>
-                        <a class="dropdown-item" href="#">Pets</a>
-                        <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>
-                        <a class="dropdown-item" href="#">Vehicles</a>
-                    </div>
+<%--                <li class="nav-item dropdown">--%>
+<%--                    <a class="nav-link dropdown-toggle" href="#" id="navbarLoggedInDropdown" role="button"--%>
+<%--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+<%--                        View Ads--%>
+<%--                    </a>--%>
+<%--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
+<%--                        <a class="dropdown-item" href="/ads">All</a>--%>
+<%--                        <div class="dropdown-divider"></div>--%>
+<%--                        <a class="dropdown-item" href="#">Electronics & Media</a>--%>
+<%--                        <a class="dropdown-item" href="#">Clothing</a>--%>
+<%--                        <a class="dropdown-item" href="#">Pets</a>--%>
+<%--                        <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>--%>
+<%--                        <a class="dropdown-item" href="#">Vehicles</a>--%>
+<%--                    </div>--%>
+<%--                </li>--%>
+                <li>
+                    <a class="nav-link" href="/ads/show">View All Ads</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -65,21 +68,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/register"><i class="fas fa-user-plus">Register</i></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarLoggedOutDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        View Ads
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/ads">All</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Electronics & Media</a>
-                        <a class="dropdown-item" href="#">Clothing</a>
-                        <a class="dropdown-item" href="#">Pets</a>
-                        <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>
-                        <a class="dropdown-item" href="#">Vehicles</a>
-                    </div>
+                <li>
+                    <a class="nav-link" href="/ads">View All Ads</a>
                 </li>
+<%--                <li class="nav-item dropdown">--%>
+<%--                    <a class="nav-link dropdown-toggle" href="#" id="navbarLoggedOutDropdown" role="button"--%>
+<%--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+<%--                        View Ads--%>
+<%--                    </a>--%>
+<%--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
+<%--                        <a class="dropdown-item" href="/ads">All</a>--%>
+<%--                        <div class="dropdown-divider"></div>--%>
+<%--                        <a class="dropdown-item" href="#">Electronics & Media</a>--%>
+<%--                        <a class="dropdown-item" href="#">Clothing</a>--%>
+<%--                        <a class="dropdown-item" href="#">Pets</a>--%>
+<%--                        <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>--%>
+<%--                        <a class="dropdown-item" href="#">Vehicles</a>--%>
+<%--                    </div>--%>
+<%--                </li>--%>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -12,7 +12,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Ad Info" />
     </jsp:include>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />

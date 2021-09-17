@@ -12,9 +12,9 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-grey w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
-        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-white"
+        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
            title="close menu">
             <i class="fa fa-remove"></i>
         </a>
@@ -57,9 +57,8 @@
 
     <!-- First Photo Grid-->
     <div class="w3-row-padding">
-        <div class="w3-third w3-container w3-margin-bottom">
+        <div class="display-cards w3-third w3-container margin-auto">
         <h2>Here are all your ads:</h2>
-
             <c:forEach var="ad" items="${ads}">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
@@ -92,9 +91,6 @@
         document.getElementById("myOverlay").style.display = "none";
     }
 </script>
-
-
-<%-->>>>>>> main--%>
 
 </body>
 </html>
