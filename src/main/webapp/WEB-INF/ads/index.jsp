@@ -14,7 +14,6 @@
     <h1>Here Are all the ads!</h1>
 
     <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
-        <h2>Here are all your ads:</h2>
         <c:forEach var="ad" items="${ads}">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">

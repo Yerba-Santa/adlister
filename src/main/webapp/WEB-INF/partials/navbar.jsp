@@ -40,7 +40,7 @@
 <%--                    </div>--%>
 <%--                </li>--%>
                 <li>
-                    <a class="nav-link" href="/ads/show">View All Ads</a>
+                    <a class="nav-link" href="/ads">View All Ads</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
