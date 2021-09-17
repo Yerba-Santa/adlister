@@ -24,10 +24,10 @@
             <i class="fa fa-remove"></i>
         </a>
         <br><br>
-        <h4><b>PORTFOLIO</b></h4>
+        <h4><b>${sessionScope.user.username}</b></h4>
     </div>
     <div class="w3-bar-block">
-        <i class="fas fa-user fa-3x"></i>
+        <i class="fas fa-user fa-5x" id="profile-logo"></i>
         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
                 class="fa fa-th-large fa-fw w3-margin-right"></i>EDIT PROFILE</a>
     </div>
@@ -54,7 +54,7 @@
             <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i
                     class="fa fa-bars"></i></span>
             <div class="w3-container">
-                <h1><b>Welcome, ${sessionScope.user.username}!</b></h1>
+                <h1><b>Welcome!</b></h1>
                 <%--                <div class="w3-section w3-bottombar w3-padding-16">--%>
                 <%--                    <span class="w3-margin-right">Filter:</span>--%>
                 <%--                    <button class="w3-button w3-black">ALL</button>--%>
