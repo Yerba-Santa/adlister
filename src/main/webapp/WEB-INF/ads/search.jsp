@@ -16,7 +16,6 @@
         <div class="card-body">
             <h5 class="card-title">${ad.title}</h5>
             <p>${ad.description}</p>
-
         </div>
     </div>
     </c:forEach>

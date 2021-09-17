@@ -8,6 +8,7 @@ body, h1, h2, h3, h4, h5, h6 {font-family: "Raleway", sans-serif}
 #profile-logo {display: flex; justify-content: center}
 .users-name {display: flex; justify-content: center}
 .display-cards {display: flex; justify-content: space-between; flex-wrap: wrap; margin: auto}
+.select-category {display: flex; justify-content: space-evenly}
 
 
 

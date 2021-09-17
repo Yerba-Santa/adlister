@@ -24,21 +24,21 @@
             <li class="nav-item">
                 <a class="nav-link" href="/register"><i class="fas fa-user-plus">Register</i></a>
             </li>
-<%--            <li class="nav-item dropdown">--%>
-<%--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--%>
-<%--                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--                    View Ads--%>
-<%--                </a>--%>
-<%--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
-<%--                    <a class="dropdown-item" href="/ads">All</a>--%>
-<%--                    <div class="dropdown-divider"></div>--%>
-<%--                    <a class="dropdown-item" href="#">Electronics & Media</a>--%>
-<%--                    <a class="dropdown-item" href="#">Clothing</a>--%>
-<%--                    <a class="dropdown-item" href="#">Pets</a>--%>
-<%--                    <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>--%>
-<%--                    <a class="dropdown-item" href="#">Vehicles</a>--%>
-<%--                </div>--%>
-<%--            </li>--%>
+            <%--            <li class="nav-item dropdown">--%>
+            <%--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--%>
+            <%--                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+            <%--                    View Ads--%>
+            <%--                </a>--%>
+            <%--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
+            <%--                    <a class="dropdown-item" href="/ads">All</a>--%>
+            <%--                    <div class="dropdown-divider"></div>--%>
+            <%--                    <a class="dropdown-item" href="#">Electronics & Media</a>--%>
+            <%--                    <a class="dropdown-item" href="#">Clothing</a>--%>
+            <%--                    <a class="dropdown-item" href="#">Pets</a>--%>
+            <%--                    <a class="dropdown-item" href="#">Sporting Goods & Outdoors</a>--%>
+            <%--                    <a class="dropdown-item" href="#">Vehicles</a>--%>
+            <%--                </div>--%>
+            <%--            </li>--%>
         </ul>
     </div>
 </nav>
