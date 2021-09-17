@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/ads/create"><i class="fas fa-plus-circle">Create New Ad</i></a>
                 </li>
+                <li>
+                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out">Logout</i></a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarLoggedInDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

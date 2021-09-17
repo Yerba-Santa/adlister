@@ -28,6 +28,7 @@
     </div>
     <div class="w3-bar-block">
         <i class="fas fa-user fa-5x" id="profile-logo"></i>
+        <br>
         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
                 class="fa fa-th-large fa-fw w3-margin-right"></i>EDIT PROFILE</a>
     </div>
