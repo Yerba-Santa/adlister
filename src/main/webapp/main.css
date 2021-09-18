@@ -1,4 +1,4 @@
-body, h1, h2, h3, h4, h5, h6 {font-family: "Raleway", sans-serif}
+body, h1, h2, h3, h4, h5, h6, .back-button {font-family: "Raleway", sans-serif}
 .nav-item, .nav-link {font-family: "Raleway", sans-serif; display: flex; margin-right: auto}
 .jumbo-container > h1 {display: flex; justify-content: center}
 .jumbo-container > p {display: flex; justify-content: center}
@@ -8,6 +8,7 @@ body, h1, h2, h3, h4, h5, h6 {font-family: "Raleway", sans-serif}
 #profile-logo {display: flex; justify-content: center}
 .users-name {display: flex; justify-content: center}
 .display-cards {display: flex; margin: auto; padding: 2em ; flex-wrap: wrap; justify-content: center; align-items: center}
+.back-button {font-family: "Raleway", sans-serif}
 
 
 

@@ -69,12 +69,12 @@
             <h3>SEARCH </h3>
             <h3><i class="fa fa-hashtag" aria-hidden="true">CATEGORIES</i></h3>
             <div class="category">
-                <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Electronics & Media</a></span><span
-                    class="align-top w3-tag w3-grey w3-margin-bottom"><a href="/ads/search">Clothing</a></span>
-                <span class="align-bottom w3-tag w3-grey w3-margin-bottom"><a href="/ads/search">Pets</a></span><span
+                <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/show">Electronics & Media</a></span><span
+                    class="align-top w3-tag w3-grey w3-margin-bottom"><a href="/ads/show">Clothing</a></span>
+                <span class="align-bottom w3-tag w3-grey w3-margin-bottom"><a href="/ads/show">Pets</a></span><span
                     class="align-top w3-tag w3-grey w3-margin-bottom"><a
-                    href="/ads/search">Sporting Goods & Outdoors</a></span>
-                <span class="align-baseline w3-tag w3-grey w3-margin-bottom"><a href="/ads/search">Vehicles</a></span>
+                    href="/ads/show">Sporting Goods & Outdoors</a></span>
+                <span class="align-baseline w3-tag w3-grey w3-margin-bottom"><a href="/ads/show">Vehicles</a></span>
             </div>
         </div>
     </div>
