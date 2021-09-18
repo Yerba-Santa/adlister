@@ -69,16 +69,14 @@
             <h3>SEARCH </h3>
             <h3><i class="fa fa-hashtag" aria-hidden="true">CATEGORIES</i></h3>
             <div class="category">
-                <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="/ads/search">Electronics & Media</a></span><span
-                    class="align-top w3-tag w3-grey w3-margin-bottom"><a href="/ads/search">Clothing</a></span>
-                <span class="align-bottom w3-tag w3-grey w3-margin-bottom"><a href="/ads/search">Pets</a></span><span
-                    class="align-top w3-tag w3-grey w3-margin-bottom"><a
-                    href="/ads/search">Sporting Goods & Outdoors</a></span>
-                <span class="align-baseline w3-tag w3-grey w3-margin-bottom"><a href="/ads/search">Vehicles</a></span>
+                <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a href="${pageContext.request.contextPath}/ads/category?category=electronics">Electronics & Media</a></span><span
+                    class="align-top w3-tag w3-grey w3-margin-bottom"><a href="${pageContext.request.contextPath}/ads/category?category=clothing">Clothing</a></span>
+                <span class="align-bottom w3-tag w3-grey w3-margin-bottom"><a href="${pageContext.request.contextPath}/ads/category?category=pets">Pets</a></span><span
+                    class="align-top w3-tag w3-grey w3-margin-bottom"><a href="${pageContext.request.contextPath}/ads/category?category=sporting">Sporting Goods & Outdoors</a></span>
+                <span class="align-baseline w3-tag w3-grey w3-margin-bottom"><a href="${pageContext.request.contextPath}/ads/category?category=vehicles">Vehicles</a></span>
             </div>
         </div>
     </div>
-
 
     <footer class="w3-container w3-padding-32 w3-dark-grey">
         <div class="w3-black w3-center w3-padding-24">Powered by Yerba-Santa</div>

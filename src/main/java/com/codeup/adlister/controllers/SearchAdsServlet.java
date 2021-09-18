@@ -22,21 +22,13 @@ public class SearchAdsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String keyword = request.getParameter("keyword");
 
-        System.out.println(keyword);
-        boolean inputHasErrors = keyword.isEmpty();
-
-        if (inputHasErrors) {
-            response.sendRedirect("/ads");//NEED A PAGE TO REDIRECT TO!
+        if (keyword.isEmpty()) { //if no input in search bar, just show all ads by default
+            response.sendRedirect("/ads");
             return;
         }
+
         List<Ad> ads = DaoFactory.getAdsDao().search(keyword);
         request.setAttribute("ads", ads);
-        System.out.println(ads);
         request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
-
-
     }
-
 }
-
-//

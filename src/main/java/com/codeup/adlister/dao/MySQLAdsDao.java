@@ -93,23 +93,6 @@ public class MySQLAdsDao implements Ads{
             throw new RuntimeException("Error updating ad", e);
         }
     }
-//
-//    @Override
-//    public List<Ad> getByUserId(Long id) {
-//        try {
-//            String Query = "SELECT * from ads where user_id = ?" ;
-//            PreparedStatement stmt = connection.prepareStatement(Query);
-//            stmt.setLong(1, id);
-////            stmt.setString(2, ad.getTitle());
-////            stmt.setString(3, ad.getDescription());
-//            return createAdsFromResults(stmt.executeQuery());
-////            ResultSet rs = stmt.getGeneratedKeys();
-////            rs.next();
-////            return rs.getLong(1);
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error creating a new ad.", e);
-//        }
-//    }
 
     public void delete(long id) {
         String Query = "DELETE FROM ads WHERE id = ?";
@@ -122,24 +105,6 @@ public class MySQLAdsDao implements Ads{
         }
 
     }
-
-//
-//    @Override
-//    public List<Ad> getByUserId(Long id) {
-//        try {
-//            String Query = "SELECT * from ads where user_id = ?" ;
-//            PreparedStatement stmt = connection.prepareStatement(Query);
-//            stmt.setLong(1, id);
-////            stmt.setString(2, ad.getTitle());
-////            stmt.setString(3, ad.getDescription());
-//            return createAdsFromResults(stmt.executeQuery());
-////            ResultSet rs = stmt.getGeneratedKeys();
-////            rs.next();
-////            return rs.getLong(1);
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error creating a new ad.", e);
-//        }
-//    }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
@@ -192,11 +157,6 @@ public class MySQLAdsDao implements Ads{
         return ads;
     }
 
-//    To do
-//    Update method
-//    create ad servlet
-//    Inside servlet create a do get and do post form (Make sure do get provide the information of ad user is trying to edit)
-//    Create an update Ad.jsp (create a form)
     //Add category -BR
     public void addCategory(Long ad_ID, Long category_ID){
         try {
@@ -209,6 +169,7 @@ public class MySQLAdsDao implements Ads{
             throwables.printStackTrace();
         }
     }
+
     public void removeCategories(Long ad_ID) {
         try {
             String insertQuery = "DELETE ad_categories WHERE ad_id = ?";
@@ -221,4 +182,20 @@ public class MySQLAdsDao implements Ads{
         }
 
     }
+
+    //gets ads that match category
+    public List<Ad> getAdsFromCategory(String category){
+        try {
+            String query = "SELECT * FROM ads WHERE id IN " +
+                            "(SELECT ad_id FROM ad_categories WHERE category_id IN(" +
+                            "SELECT * FROM categories WHERE categories.title LIKE ?))";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, String.valueOf(category));
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
 }
