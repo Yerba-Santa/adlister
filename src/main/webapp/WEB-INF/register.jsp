@@ -13,7 +13,7 @@
 
         <jsp:include page="/WEB-INF/partials/messages.jsp" />
 
-        <h1>Please fill in your information.</h1>
+        <h1>Registration:</h1>
         <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -43,6 +43,8 @@
             </div>
             <input type="submit" class="btn btn-dark btn-block">
         </form>
+
+        <p>Already have an account?? <a href="${pageContext.request.contextPath}/login">Login now!</a></p>
     </div>
 </body>
 </html>
