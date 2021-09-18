@@ -55,10 +55,11 @@
         </div>
     </header>
 
+    <h2>Here are all your ads:</h2>
     <!-- First Photo Grid-->
     <div class="w3-row-padding">
         <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
-        <h2>Here are all your ads:</h2>
+
             <c:forEach var="ad" items="${ads}">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">

@@ -11,7 +11,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>Here are all the ads:</h1>
 
     <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
         <c:forEach var="ad" items="${ads}">
