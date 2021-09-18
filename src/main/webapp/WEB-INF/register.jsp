@@ -44,7 +44,7 @@
             <input type="submit" class="btn btn-dark btn-block">
         </form>
 
-        <p>Already have an account?? <a href="${pageContext.request.contextPath}/login">Login now!</a></p>
+        <p>Already have an account? <a href="${pageContext.request.contextPath}/login">Login now!</a></p>
     </div>
 </body>
 </html>

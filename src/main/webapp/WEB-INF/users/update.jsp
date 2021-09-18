@@ -19,6 +19,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<a href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
 <div class="container">
     <h1> Update your Profile</h1>
     <form action="/user/update" method="post">
