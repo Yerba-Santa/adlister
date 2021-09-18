@@ -17,10 +17,7 @@
         <c:forEach var="ad" items="${ads}">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-
-                    <h5 class="card-title"><a href="/ads/show">${ad.title}</a></h5>
-                    <a href="${pageContext.request.contextPath}/ads/show?id=${ad.id}"> <%-- Creates link to show.jsp -CG --%>
-                        <h5 class="card-title">${ad.title}</h5></a>
+                    <h5 class="card-title"><a href="${pageContext.request.contextPath}/ads/show?id=${ad.id}">${ad.title}</a></h5>
                     <p>${ad.description}</p>
                 </div>
             </div>
