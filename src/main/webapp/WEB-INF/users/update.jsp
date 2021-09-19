@@ -19,18 +19,19 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<a class="back-button" href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
 <div class="container">
     <h1> Update your Profile</h1>
     <form action="/user/update" method="post">
         <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="${email}">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Username</label>
-                <input type="text" name="username" class="form-control" id="exampleInputPassword1">
+                <input type="text" name="username" class="form-control" id="exampleInputPassword1" value="${username}">
             </div>
             <button type="submit" class="btn btn-block btn-dark">Submit</button>
         </form>

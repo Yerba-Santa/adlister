@@ -11,7 +11,6 @@
 <div class="container">
     <h1>Here Are Your Search Results:</h1>
 
-
     <c:if test="${ads != null}">
         <c:forEach var="ad" items="${ads}">
         <div class="card" style="width: 18rem;">

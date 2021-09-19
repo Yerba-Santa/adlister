@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLAdsDao implements Ads{
+public class MySQLAdsDao implements Ads {
     private Connection connection;
 
     public MySQLAdsDao(Config config) {
@@ -101,7 +101,7 @@ public class MySQLAdsDao implements Ads{
             stmt.setLong(1, id);
             stmt.execute();
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a user by username", e);
+            throw new RuntimeException("Error finding ad with that ID", e);
         }
 
     }
@@ -117,13 +117,13 @@ public class MySQLAdsDao implements Ads{
 
     //Added findbyId Method - CG
     @Override
-    public Ad findById(long id){
+    public Ad findById(long id) {
         try {
             String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, String.valueOf(id));
             ResultSet rs = stmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 return extractAd(rs);
             }
             return null;
@@ -134,13 +134,13 @@ public class MySQLAdsDao implements Ads{
 
     //find userId that matches ad_id - CG
     @Override
-    public Long findUserId(long id){
+    public Long findUserId(long id) {
         try {
             String query = "SELECT user_id FROM ads WHERE id = ? LIMIT 1";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, String.valueOf(id));
             ResultSet rs = stmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 return rs.getLong("user_id");
             }
             return null;
@@ -158,7 +158,7 @@ public class MySQLAdsDao implements Ads{
     }
 
     //Add category -BR
-    public void addCategory(Long ad_ID, Long category_ID){
+    public void addCategory(Long ad_ID, Long category_ID) {
         try {
             String insertQuery = "INSERT INTO ad_categories(ad_id, category_id) VALUES (?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);

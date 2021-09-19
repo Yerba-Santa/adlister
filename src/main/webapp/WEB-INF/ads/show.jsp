@@ -16,12 +16,16 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-<div class="card" style="width: 18rem;">
-    <p>${ad.description}</p>
-
-    <h2>Contact Information:</h2>
-    <a href="${pageContext.request.contextPath}/profile"><h3>User: ${user.username}</h3></a><%--Link to profile page - CG--%>
-    <h4>Email: ${user.email}</h4>
+<a class="back-button" href="/ads"><i class="fa fa-chevron-left" aria-hidden="true">Back to Ads</i></a>
+<div class="display-cards">
+    <div class="card" style="width: 18rem;">
+        <h3>${ad.title}</h3>
+        <h4>${ad.description}</h4>
+        <br>
+        <h4>Contact Information:</h4>
+        <a href="${pageContext.request.contextPath}/profile"><h5>User: ${user.username}</h5></a><%--Link to profile page - CG--%>
+        <h5>Email: ${user.email}</h5>
+    </div>
 </div>
 
 
