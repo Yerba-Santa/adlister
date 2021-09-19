@@ -23,12 +23,12 @@
     <form action="/ads/updateads" method="post">
         <div class="form-group">
             <label for="updateTitle">Title</label>
-            <input id="updateTitle" name="updateTitle" class="form-control" type="text">
+            <input id="updateTitle" name="updateTitle" class="form-control" type="text" value="${title}">
             <input type="hidden" name="ad_id" value="${ad_id}">
         </div>
         <div class="form-group">
             <label for="updateDescription">Description</label>
-            <textarea id="updateDescription" name="updateDescription" class="form-control" type="text"></textarea>
+            <textarea id="updateDescription" name="updateDescription" class="form-control" type="text">${description}</textarea>
         </div>
         <input type="submit" class="btn btn-block btn-dark">
     </form>

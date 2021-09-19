@@ -13,9 +13,9 @@ public interface Ads {
     void update(Ad ad);
     Ad findById(long id);
     List<Ad> getByUserId(Long id);
-    void deleteCategory(Long category_ID);
     void delete(long id);
     Long findUserId(long id);
     List<Ad> search(String keyword);
     void addCategory(Long ad_ID, Long category_ID);
+    void removeCategories(Long ad_ID);
 }
