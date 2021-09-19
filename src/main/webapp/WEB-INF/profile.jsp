@@ -79,7 +79,6 @@
     <!-- End page content -->
 </div>
 
-
 <script>
     // Script to open and close sidebar
     function w3_open() {
@@ -90,6 +89,11 @@
     function w3_close() {
         document.getElementById("mySidebar").style.display = "none";
         document.getElementById("myOverlay").style.display = "none";
+
+    function deleteConfirmation() {
+
+
+    }
     }
 </script>
 
