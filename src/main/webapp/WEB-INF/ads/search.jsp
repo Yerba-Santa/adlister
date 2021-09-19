@@ -11,14 +11,21 @@
 <div class="container">
     <h1>Here Are Your Search Results:</h1>
 
-    <c:forEach var="ad" items="${ads}">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">${ad.title}</h5>
-            <p>${ad.description}</p>
+    <c:if test="${ads != null}">
+        <c:forEach var="ad" items="${ads}">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><a href="${pageContext.request.contextPath}/ads/show?id=${ad.id}">${ad.title}</a></h5>
+                <p>${ad.description}</p>
+            </div>
         </div>
-    </div>
-    </c:forEach>
+        </c:forEach>
+    </c:if>
+
+    <c:if test="${ads.isEmpty()}">
+        <h3>No Search Results Found</h3>
+        <a href="${pageContext.request.contextPath}/ads">Return to all ads</a>
+    </c:if>
 
 </body>
 </html>

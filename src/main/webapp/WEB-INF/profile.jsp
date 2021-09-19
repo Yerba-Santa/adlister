@@ -76,20 +76,6 @@
         <div class="w3-black w3-center w3-padding-24">Powered by Yerba-Santa</div>
     </div>
 
-    <h2>Here are all your ads:</h2>
-    <!-- First Photo Grid-->
-    <div class="w3-row-padding">
-        <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
-
-            <c:forEach var="ad" items="${ads}">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">${ad.title}</h5>
-                        <p>${ad.description}</p>
-                        <a href="${pageContext.request.contextPath}/ads/updateads?ad_id=${ad.id}" class="btn btn-sm btn-success">Update</a>
-                        <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}" class="btn btn-sm btn-danger">Delete</a>
-                    </div>
-
     <div class="modal fade" id="exampleModal${ad.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
