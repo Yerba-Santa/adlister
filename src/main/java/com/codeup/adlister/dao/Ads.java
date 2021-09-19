@@ -18,4 +18,5 @@ public interface Ads {
     List<Ad> search(String keyword);
     void addCategory(Long ad_ID, Long category_ID);
     void removeCategories(Long ad_ID);
+    List<Ad> getAdsFromCategory(String category);
 }
