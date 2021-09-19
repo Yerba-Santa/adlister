@@ -28,7 +28,8 @@
         <div class="w3-bar-block">
             <i class="fas fa-user fa-5x" id="profile-logo"></i>
             <br>
-            <a href="${pageContext.request.contextPath}/user/update" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
+            <a href="${pageContext.request.contextPath}/user/update" onclick="w3_close()"
+               class="w3-bar-item w3-button w3-padding w3-text-teal"><i
                     class="fa fa-th-large fa-fw w3-margin-right"></i>EDIT PROFILE</a>
         </div>
         <div class="w3-panel w3-large">
@@ -56,18 +57,21 @@
             </div>
         </header>
 
+
         <!-- First Photo Grid-->
+        <h2>Here are all your ads:</h2>
         <div class="w3-row-padding">
             <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
-                <h2>Here are all your ads:</h2>
                 <c:forEach var="ad" items="${ads}">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 18rem; margin: auto">
                         <div class="card-body">
                             <h5 class="card-title">${ad.title}</h5>
                             <p>${ad.description}</p>
-                            <a href="${pageContext.request.contextPath}/ads/updateads?ad_id=${ad.id}" class="btn btn-sm btn-success">Update</a>
-                            <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}" class="btn btn-sm btn-danger"
-                               data-toggle="modal" data-target="#exampleModal${ad.id}">Delete</a> <!-- Button trigger modal -->
+                            <a href="${pageContext.request.contextPath}/ads/updateads?ad_id=${ad.id}"
+                               class="btn btn-sm btn-success">Update</a>
+                            <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}"
+                               onclick="return confirm('Are you sure you want to delete this item?')"
+                               class="btn btn-sm btn-danger">Delete</a>
                         </div>
                     </div>
                 </c:forEach>
@@ -76,30 +80,34 @@
         <div class="w3-black w3-center w3-padding-24">Powered by Yerba-Santa</div>
     </div>
 
-    <div class="modal fade" id="exampleModal${ad.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirm Action</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to Delete?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <a href="/ads/delete?ad_id=${ad.id}" class="btn btn-danger">Yes</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%--    <div class="modal fade" id="exampleModal${ad.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+    <%--        <div class="modal-dialog">--%>
+    <%--            <div class="modal-content">--%>
+    <%--                <div class="modal-header">--%>
+    <%--                    <h5 class="modal-title" id="exampleModalLabel">Confirm Action</h5>--%>
+    <%--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+    <%--                        <span aria-hidden="true">&times;</span>--%>
+    <%--                    </button>--%>
+    <%--                </div>--%>
+    <%--                <div class="modal-body">--%>
+    <%--                    Are you sure you want to Delete?--%>
+    <%--                </div>--%>
+    <%--                <div class="modal-footer">--%>
+    <%--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>--%>
+    <%--                    <a href="/ads/delete?ad_id=${ad.id}" class="btn btn-danger">Yes</a>--%>
+    <%--                </div>--%>
+    <%--            </div>--%>
+    <%--        </div>--%>
+    <%--    </div>--%>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<%--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"--%>
+<%--        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"--%>
+<%--        crossorigin="anonymous"></script>--%>
+<%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"--%>
+<%--        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">--%>
+<%--</script>--%>
 
-    <!-- End page content -->
+<!-- End page content -->
 
 <script>
     // Script to open and close sidebar
@@ -111,6 +119,7 @@
     function w3_close() {
         document.getElementById("mySidebar").style.display = "none";
         document.getElementById("myOverlay").style.display = "none";
+
     }
 </script>
 
