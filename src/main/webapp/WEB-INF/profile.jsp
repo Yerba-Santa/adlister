@@ -66,7 +66,7 @@
                         <h5 class="card-title">${ad.title}</h5>
                         <p>${ad.description}</p>
                         <a href="${pageContext.request.contextPath}/ads/updateads?ad_id=${ad.id}" class="btn btn-sm btn-success">Update</a>
-                        <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-sm btn-danger">Delete</a>
                     </div>
                 </div>
             </c:forEach>

@@ -118,7 +118,7 @@ public class MySQLAdsDao implements Ads{
             stmt.setLong(1, id);
             stmt.execute();
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a user by username", e);
+            throw new RuntimeException("Error finding ad with that ID", e);
         }
 
     }
@@ -208,6 +208,16 @@ public class MySQLAdsDao implements Ads{
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
 
+    public void deleteCategory(Long category_ID) {
+        String query = "DELETE FROM ad_categories WHERE ad_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, category_ID);
+            stmt.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
