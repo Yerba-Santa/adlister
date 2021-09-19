@@ -5,12 +5,16 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Create a new Ad"/>
     </jsp:include>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<a class="back-button" href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
 <div class="container">
 
     <jsp:include page="/WEB-INF/partials/messages.jsp" />
+
+
 
     <h1>Create a new Ad</h1>
     <form action="/ads/create" method="post">

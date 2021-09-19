@@ -15,20 +15,24 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<div>
+    <a class="back-button" href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
+</div>
 <div class="container">
     <h1>Update your Ad</h1>
     <form action="/ads/updateads" method="post">
         <div class="form-group">
             <label for="updateTitle">Title</label>
-            <input id="updateTitle" name="updateTitle" class="form-control" type="text">
+            <input id="updateTitle" name="updateTitle" class="form-control" type="text" value="${title}">
             <input type="hidden" name="ad_id" value="${ad_id}">
         </div>
         <div class="form-group">
             <label for="updateDescription">Description</label>
-            <textarea id="updateDescription" name="updateDescription" class="form-control" type="text"></textarea>
+            <textarea id="updateDescription" name="updateDescription" class="form-control" type="text">${description}</textarea>
         </div>
         <input type="submit" class="btn btn-block btn-dark">
     </form>
+
 </div>
 
 </body>

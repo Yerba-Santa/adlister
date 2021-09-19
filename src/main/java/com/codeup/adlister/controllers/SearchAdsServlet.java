@@ -21,8 +21,8 @@ import java.util.List;
 public class SearchAdsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String keyword = request.getParameter("keyword");
-
         System.out.println(keyword);
+
         boolean inputHasErrors = keyword.isEmpty();
 
         if (inputHasErrors) {
@@ -31,11 +31,12 @@ public class SearchAdsServlet extends HttpServlet {
         }
         List<Ad> ads = DaoFactory.getAdsDao().search(keyword);
         request.setAttribute("ads", ads);
-        System.out.println(ads);
         request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
-
-
     }
+
+
+
+
 
 }
 
