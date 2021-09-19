@@ -37,3 +37,10 @@ CREATE TABLE ad_categories (
                                FOREIGN KEY (ad_id) REFERENCES ads(id),
                                FOREIGN KEY (category_id) REFERENCES categories(id)
 );
+
+INSERT INTO categories(id, title) VALUE
+    (1, 'Electronics & Media'),
+    (2, 'Clothing'),
+    (3, 'Vehicles'),
+    (4, 'Sporting Goods & Outdoors'),
+    (5, 'Pets');

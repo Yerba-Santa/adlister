@@ -186,9 +186,8 @@ public class MySQLAdsDao implements Ads{
     //gets ads that match category
     public List<Ad> getAdsFromCategory(String category){
         try {
-            String query = "SELECT * FROM ads WHERE id IN " +
-                            "(SELECT ad_id FROM ad_categories WHERE category_id IN(" +
-                            "SELECT * FROM categories WHERE categories.title LIKE ?))";
+            String query = "SELECT * FROM ads as a WHERE a.id IN(SELECT ac.ad_id  FROM ad_categories as ac WHERE category_id IN(\n" +
+                    "    SELECT id FROM categories WHERE categories.title LIKE ?));";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, String.valueOf(category));
             ResultSet rs = stmt.executeQuery();
@@ -197,5 +196,20 @@ public class MySQLAdsDao implements Ads{
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
+//
+//    public Ad findById(long id){
+//        try {
+//            String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
+//            PreparedStatement stmt = connection.prepareStatement(query);
+//            stmt.setString(1, String.valueOf(id));
+//            ResultSet rs = stmt.executeQuery();
+//            if(rs.next()){
+//                return extractAd(rs);
+//            }
+//            return null;
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error finding a Ad by Id", e);
+//        }
+//    }
 
 }

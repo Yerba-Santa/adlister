@@ -23,12 +23,33 @@ import java.util.List;
 public class CategoriesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String category = request.getParameter("category"); //gets category
-        request.setAttribute("category", category); //sets category
+        String searchCategory =  getCategory(category);
+        request.setAttribute("category", searchCategory);
 
-        List<Ad> ads = DaoFactory.getAdsDao().getAdsFromCategory(category); //gets all ads with category
+        List<Ad> ads = DaoFactory.getAdsDao().getAdsFromCategory(searchCategory); //gets all ads with category
 
         request.setAttribute("ads", ads); //sets ad attribute
         request.getRequestDispatcher("/WEB-INF/ads/category.jsp").forward(request, response);
+    }
+
+    protected String getCategory(String category){
+        String actualCategory = "";
+        if(category.equals("Clothing")){
+            actualCategory = "Clothing";
+        }
+        else if(category.equals("Electronics")){
+            actualCategory = "Electronics & Media";
+        }
+        else if(category.equals("Pets")){
+            actualCategory = "Pets";
+        }
+        else if(category.equals("Sporting")){
+            actualCategory = "Sporting Goods & Outdoors";
+        }
+        else if(category.equals("Vehicles")){
+            actualCategory = "Vehicles";
+        }
+        return actualCategory;
     }
 
 
