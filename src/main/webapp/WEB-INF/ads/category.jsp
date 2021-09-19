@@ -14,6 +14,10 @@
     <h1>Category: ${category}</h1>
 
     <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
+        <c:if test="${ads.isEmpty()}">
+            <h4>No ads found. <a href="${pageContext.request.contextPath}/ads">View all ads</a></h4>
+        </c:if>
+
         <c:forEach var="ad" items="${ads}">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
