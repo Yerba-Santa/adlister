@@ -17,6 +17,10 @@ public class UpdateAdsServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+
+        String errorMessage = request.getParameter("errorMessage");
+        request.setAttribute("errorMessage", errorMessage);
+
         long ad_id = Long.parseLong(request.getParameter("ad_id"));
         Ad ad = DaoFactory.getAdsDao().findById(ad_id);
 
@@ -30,12 +34,23 @@ public class UpdateAdsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
         String updateTitle = request.getParameter("updateTitle");
         String updateDescription = request.getParameter("updateDescription");
         long updateID = Long.parseLong(request.getParameter("ad_id"));
+
+        if(updateTitle == null || updateTitle.isEmpty()){
+            response.sendRedirect("/ads/updateads?ad_id=" + updateID+ "&errorMessage=TitleNull");
+            return;
+        }
+
+        if(updateDescription == null || updateDescription.isEmpty()){
+            response.sendRedirect("/ads/updateads?ad_id=" + updateID+ "&errorMessage=DescriptionNull");
+            return;
+        }
+
+        User user = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(updateID, user.getId(),updateTitle, updateDescription);
         DaoFactory.getAdsDao().update(ad);
-        response.sendRedirect("/ads/show?id=" + updateID);
+        response.sendRedirect("/profile");
     }
 }

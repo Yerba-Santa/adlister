@@ -17,7 +17,6 @@ public class UpdateProfileServlet extends HttpServlet {
             return;
         }
 
-
         String errorMessage = request.getParameter("errorMessage");
         request.setAttribute("errorMessage", errorMessage);
 
