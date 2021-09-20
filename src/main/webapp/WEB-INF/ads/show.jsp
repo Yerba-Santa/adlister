@@ -23,7 +23,7 @@
         <h4>${ad.description}</h4>
         <br>
         <h4>Contact Information:</h4>
-        <a href="${pageContext.request.contextPath}/profile"><h5>User: ${user.username}</h5></a><%--Link to profile page - CG--%>
+        <h5>User: ${user.username}</h5><%--Link to profile page - CG--%>
         <h5>Email: ${user.email}</h5>
     </div>
 </div>
