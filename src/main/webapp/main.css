@@ -7,7 +7,7 @@ body, h1, h2, h3, h4, h5, h6, .back-button {font-family: "Raleway", sans-serif}
 .category {display: flex; justify-content: space-evenly}
 #profile-logo {display: flex; justify-content: center}
 .users-name {display: flex; justify-content: center}
-.display-cards {display: flex; margin: auto; padding: 2em ; flex-wrap: wrap; justify-content: center; align-items: center}
+.display-cards {display: flex; flex-wrap: wrap; justify-content: center; align-items: center}
 .back-button {font-family: "Raleway", sans-serif}
 
 
