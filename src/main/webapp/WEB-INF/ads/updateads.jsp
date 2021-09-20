@@ -19,7 +19,14 @@
     <a class="back-button" href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
 </div>
 <div class="container">
+<<<<<<< HEAD
     <h1 class="display-4">Update your Ad</h1>
+=======
+
+    <jsp:include page="/WEB-INF/partials/messages.jsp"/>
+
+    <h1>Update your Ad</h1>
+>>>>>>> 5baec78b0a58ca5cb26a1a5d507c61b133b314aa
     <form action="/ads/updateads" method="post">
         <div class="form-group">
             <label for="updateTitle">Title</label>
