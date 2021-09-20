@@ -31,8 +31,8 @@ public class ForgotPasswordServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String email = request.getParameter("email");
-        String username = request.getParameter("username");
+        String email = request.getParameter("emailPW");
+        String username = request.getParameter("usernamePW");
         String newPassword = request.getParameter("newPassword");
         String confirmNewPassword = request.getParameter("confirmNewPassword");
         request.getSession().setAttribute("passwordSuccess", null);
@@ -46,19 +46,15 @@ public class ForgotPasswordServlet extends HttpServlet {
         User user1 = DaoFactory.getUsersDao().findByUsername(username);
         User user2 = DaoFactory.getUsersDao().findByEmail(email);
 
-        String email1 = user1.getEmail();
-        String email2 = user2.getEmail();
-
-        //check if username and email match & if username does not exist- a lil security not a lot lol
-        if(!email1.equals(email2)){
+        if(user1 == null || user2 == null){
             response.sendRedirect("/forgotPassword?errorMessage=EmailUsernameConflict");
             return;
         }
 
         //if password form isn't visible, redirect to be visible
-        if(request.getSession().getAttribute("username") == null) {
-            request.getSession().setAttribute("username", username);
-            request.getSession().setAttribute("email", email);
+        if(request.getSession().getAttribute("usernamePW") == null) {
+            request.getSession().setAttribute("usernamePW", username);
+            request.getSession().setAttribute("emailPW", email);
             request.getSession().setAttribute("confirmReset", "true");
             response.sendRedirect("/forgotPassword");
             return;
@@ -80,11 +76,13 @@ public class ForgotPasswordServlet extends HttpServlet {
         }
 
         String hash = BCrypt.hashpw(newPassword, BCrypt.gensalt()); //hashes password
-        user1.setPassword(hash); //sets new hashed password
+        DaoFactory.getUsersDao().updatePassword(hash, user1.getId());
+
+//        user1.setPassword(hash); //sets new hashed password
 
         request.getSession().setAttribute("passwordSuccess", true);
-        request.getSession().setAttribute("username", null);
-        request.getSession().setAttribute("email", null);
+        request.getSession().setAttribute("usernamePW", null);
+        request.getSession().setAttribute("emailPW", null);
         request.getSession().setAttribute("confirmReset", null);
         response.sendRedirect("/forgotPassword");
     }

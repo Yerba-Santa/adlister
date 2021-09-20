@@ -14,4 +14,5 @@ public interface Users {
     Boolean emailDuplicates(User user); //BR
     Boolean emailInputIsValid(String email);//BR
     Boolean passwordInputIsValid(String password);
+    void updatePassword(String password, long id);
 }

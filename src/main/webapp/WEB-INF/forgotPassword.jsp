@@ -27,21 +27,21 @@
 
             <div class="form-group">
                 <label for="username">Enter username:</label>
-                <c:if test="${sessionScope.username != null}">
-                    <input id="username" name="username" class="form-control" type="text" value="${sessionScope.username}">
+                <c:if test="${sessionScope.usernamePW != null}">
+                    <input id="username" name="usernamePW" class="form-control" type="text" value="${sessionScope.usernamePW}">
                 </c:if>
-                <c:if test="${sessionScope.username == null}">
-                    <input id="username" name="username" class="form-control" type="text">
+                <c:if test="${sessionScope.usernamePW == null}">
+                    <input id="username" name="usernamePW" class="form-control" type="text">
                 </c:if>
             </div>
 
             <div class="form-group">
                 <label for="email">Enter email:</label>
-                <c:if test="${sessionScope.email != null}">
-                    <input id="email" name="email" class="form-control" type="text" value="${sessionScope.email}">
+                <c:if test="${sessionScope.emailPW != null}">
+                    <input id="email" name="emailPW" class="form-control" type="text" value="${sessionScope.emailPW}">
                 </c:if>
-                <c:if test="${sessionScope.email == null}">
-                    <input id="email" name="email" class="form-control" type="text">
+                <c:if test="${sessionScope.emailPW == null}">
+                    <input id="email" name="emailPW" class="form-control" type="text">
                 </c:if>
             </div>
 
