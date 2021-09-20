@@ -19,7 +19,7 @@
     <a class="back-button" href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
 </div>
 <div class="container">
-    <h1>Update your Ad</h1>
+    <h1 class="display-4">Update your Ad</h1>
     <form action="/ads/updateads" method="post">
         <div class="form-group">
             <label for="updateTitle">Title</label>

@@ -1,4 +1,4 @@
-body, h1, h2, h3, h4, h5, h6, .back-button, .navbar-brand  {font-family: "Raleway", sans-serif}
+body, h1, h2, h3, h4, h5, h6, .back-button {font-family: "Raleway", sans-serif}
 .nav-item, .nav-link {font-family: "Raleway", sans-serif; display: flex; margin-right: auto}
 .jumbo-container > h1 {display: flex; justify-content: center}
 .jumbo-container > p {display: flex; justify-content: center}
@@ -9,6 +9,11 @@ body, h1, h2, h3, h4, h5, h6, .back-button, .navbar-brand  {font-family: "Ralewa
 .users-name {display: flex; justify-content: center}
 .display-cards {display: flex; flex-wrap: wrap; justify-content: center; align-items: center}
 .back-button {font-family: "Raleway", sans-serif; color: black}
+.navbar-brand, .display-4 {font-family: "Pricedown"; color: black}
+.navbar-brand {font-size: xx-large}
+.yerba-power {font-family: "Pricedown"; color: white; font-size: x-large}
+
+
 
 
 

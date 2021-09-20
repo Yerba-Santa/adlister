@@ -12,7 +12,7 @@
 <a class="back-button" href="/ads"><i class="fa fa-chevron-left" aria-hidden="true">Back to Ads</i></a>
 
 <div class="container">
-    <h1>Category: ${category}</h1>
+    <h1 class="display-4">Category: ${category}</h1>
 
     <div class="display-cards w3-third w3-container margin-auto" style="width: 100%;">
         <c:if test="${ads.isEmpty()}">

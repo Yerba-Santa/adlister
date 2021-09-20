@@ -12,7 +12,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container">
-    <h1>Welcome, ${sessionScope.user.username}!</h1>
+    <h1 class="display-4">Welcome, ${sessionScope.user.username}!</h1>
 
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -22,7 +22,7 @@
                 <i class="fa fa-remove"></i>
             </a>
             <br><br>
-            <h4 class="users-name"><b>${sessionScope.user.username}</b></h4>
+            <h4 class="users-name display-4"><b>${sessionScope.user.username}</b></h4>
         </div>
         <br>
         <div class="w3-bar-block">
@@ -53,7 +53,7 @@
             <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i
                     class="fa fa-bars"></i></span>
             <div class="w3-container">
-                <h1><b>Welcome!</b></h1>
+                <p><hr></p>
             </div>
         </header>
 

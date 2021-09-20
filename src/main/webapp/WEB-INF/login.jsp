@@ -12,7 +12,7 @@
 
         <jsp:include page="/WEB-INF/partials/messages.jsp" />
 
-        <h1>Please Log In</h1>
+        <h1 class="display-4">Please Log In</h1>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>

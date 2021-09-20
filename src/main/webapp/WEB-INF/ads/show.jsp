@@ -17,6 +17,7 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <a class="back-button" href="/ads"><i class="fa fa-chevron-left" aria-hidden="true">Back to Ads</i></a>
+
 <div class="display-cards">
     <div class="card" style="width: 18rem;">
         <h3>${ad.title}</h3>

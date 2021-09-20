@@ -15,7 +15,7 @@
 </c:if>
 
 <div class="categories-container" id="categories-header">
-    <h3>View by Category</h3>
+    <h3 class="display-4">View by Category</h3>
     <div class="category">
         <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a
                 href="${pageContext.request.contextPath}/ads/category?category=Electronics">Electronics & Media</a></span><span

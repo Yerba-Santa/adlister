@@ -13,7 +13,7 @@
 
         <jsp:include page="/WEB-INF/partials/messages.jsp" />
 
-        <h1>Registration:</h1>
+        <h1 class="display-4">Registration:</h1>
         <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
