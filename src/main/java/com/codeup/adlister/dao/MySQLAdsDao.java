@@ -172,7 +172,7 @@ public class MySQLAdsDao implements Ads {
 
     public void removeCategories(Long ad_ID) {
         try {
-            String insertQuery = "DELETE ad_categories WHERE ad_id = ?";
+            String insertQuery = "DELETE FROM ad_categories WHERE ad_id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad_ID);
 //            stmt.setLong(2, category_ID);
