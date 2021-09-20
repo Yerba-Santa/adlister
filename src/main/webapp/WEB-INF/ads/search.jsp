@@ -24,8 +24,9 @@
 
     <c:if test="${ads.isEmpty()}">
         <h3>No Search Results Found</h3>
-        <a href="${pageContext.request.contextPath}/ads">Return to all ads</a>
     </c:if>
+
+    <a href="${pageContext.request.contextPath}/ads">Return to all ads</a>
 
 </body>
 </html>

@@ -20,7 +20,7 @@
 
     <jsp:include page="/WEB-INF/partials/messages.jsp" />
 
-    <h1>Reset Password</h1>
+    <h1 class="display-4">Reset Password</h1>
 
     <c:if test="${sessionScope.passwordSuccess == null}">
         <form action="/forgotPassword" method="POST">
@@ -56,7 +56,7 @@
                </div>
            </c:if>
 
-            <input type="submit" class="btn btn-primary btn-block" value="Submit">
+            <input type="submit" class="btn btn-dark btn-block" value="Submit">
         </form>
     </c:if>
 
