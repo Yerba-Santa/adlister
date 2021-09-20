@@ -21,6 +21,9 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <a class="back-button" href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
 <div class="container">
+
+    <jsp:include page="/WEB-INF/partials/messages.jsp"/>
+
     <h1> Update your Profile</h1>
     <form action="/user/update" method="post">
         <form>
