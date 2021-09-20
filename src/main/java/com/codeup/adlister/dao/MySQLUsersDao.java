@@ -159,4 +159,17 @@ public class MySQLUsersDao implements Users {
         );
     }
 
+
+    public void updatePassword(String password, long id) {
+        String query = "update users set password = ? where id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, password);
+            stmt.setLong(2, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating user", e);
+        }
+    }
+
 }
