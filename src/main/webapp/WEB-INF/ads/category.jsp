@@ -11,6 +11,23 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <a class="back-button" href="/ads"><i class="fa fa-chevron-left" aria-hidden="true">Back to Ads</i></a>
 
+<div class="categories-container" id="categories-header">
+    <h3>View by Category</h3>
+    <div class="category">
+        <span class="align-baseline w3-tag w3-grey w3-margin-bottom w3-margin-left"><a
+                href="${pageContext.request.contextPath}/ads/category?category=Electronics">Electronics & Media</a></span><span
+            class="align-top w3-tag w3-grey w3-margin-bottom"><a
+            href="${pageContext.request.contextPath}/ads/category?category=Clothing">Clothing</a></span>
+        <span class="align-bottom w3-tag w3-grey w3-margin-bottom"><a
+                href="${pageContext.request.contextPath}/ads/category?category=Pets">Pets</a></span>
+        <span class="align-baseline w3-tag w3-grey w3-margin-bottom"><a
+                href="${pageContext.request.contextPath}/ads/category?category=Vehicles">Vehicles</a></span>
+        <span class="align-top w3-tag w3-grey w3-margin-bottom"><a
+                href="${pageContext.request.contextPath}/ads/category?category=Sporting">Sporting Goods & Outdoors</a></span>
+    </div>
+</div>
+<p><hr></p>
+
 <div class="container">
     <h1>Category: ${category}</h1>
 
