@@ -13,11 +13,11 @@ import java.io.IOException;
 @WebServlet(name = "controllers.ForgotUsernameServlet", urlPatterns = "/forgotUsername")
 public class ForgotUsernameServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //if user is logged in, redirect to profile
 
         String errorMessage = request.getParameter("errorMessage");
         request.setAttribute("errorMessage", errorMessage);
 
+        //if user is logged in, redirect to profile
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -27,7 +27,7 @@ public class ForgotUsernameServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String email = request.getParameter("email");
+        String email = request.getParameter("emailRecover");
         User user = DaoFactory.getUsersDao().findByEmail(email);
 
         if(user == null){
@@ -35,7 +35,7 @@ public class ForgotUsernameServlet extends HttpServlet {
             return;
         }
 
-        request.getSession().setAttribute("username", user.getUsername());
+        request.getSession().setAttribute("usernameRecover", user.getUsername());
         response.sendRedirect("/forgotUsername");
     }
 }

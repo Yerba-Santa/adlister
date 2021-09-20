@@ -21,18 +21,18 @@
         <jsp:include page="/WEB-INF/partials/messages.jsp" />
 
         <h1>Recover Username</h1>
-        <c:if test="${sessionScope.username == null}">
+        <c:if test="${sessionScope.usernameRecover == null}">
             <form action="/forgotUsername" method="POST">
                 <div class="form-group">
                     <label for="email">Enter email:</label>
-                    <input id="email" name="email" class="form-control" type="text">
+                    <input id="email" name="emailRecover" class="form-control" type="text">
                 </div>
                 <input type="submit" class="btn btn-primary btn-block" value="Submit">
             </form>
         </c:if>
 
-        <c:if test="${sessionScope.username != null}">
-            <h3>Your username is: ${sessionScope.username}</h3>
+        <c:if test="${sessionScope.usernameRecover != null}">
+            <h3>Your username is: ${sessionScope.usernameRecover}</h3>
         </c:if>
 
         <a href="${pageContext.request.contextPath}/login"><p>Return to Login</p></a>
