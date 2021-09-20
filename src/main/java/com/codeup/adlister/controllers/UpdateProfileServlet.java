@@ -48,7 +48,8 @@ public class UpdateProfileServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user"); //get current user
 
         boolean checkUsername = user.getUsername().equals(userTester.getUsername());
-        System.out.println(checkUsername);
+
+        boolean checkEmail = user.getEmail().equals(userTester.getEmail());
 
         if(DaoFactory.getUsersDao().check(userTester) && !checkUsername) { //check if username already exists
             response.sendRedirect("/user/update?errorMessage=UsernameDuplicate");
@@ -60,7 +61,7 @@ public class UpdateProfileServlet extends HttpServlet {
             return;
         }
 
-        if(DaoFactory.getUsersDao().emailDuplicates(userTester)){//Verify unique email
+        if(DaoFactory.getUsersDao().emailDuplicates(userTester) && !checkEmail){//Verify unique email
             response.sendRedirect("/user/update?errorMessage=EmailDuplicate");
             return;
         }
