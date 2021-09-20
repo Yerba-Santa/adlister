@@ -25,7 +25,7 @@
             </div>
 
             <a href="${pageContext.request.contextPath}/forgotPassword"><p>Forgot password?</p></a>
-            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+            <input type="submit" class="btn btn-dark btn-block" value="Log In">
             <input type="hidden" name="redirect" value="${redirect}">
         </form>
 
