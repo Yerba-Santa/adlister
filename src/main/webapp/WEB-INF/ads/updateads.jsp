@@ -19,6 +19,9 @@
     <a class="back-button" href="/profile"><i class="fa fa-chevron-left" aria-hidden="true">Back to Profile</i></a>
 </div>
 <div class="container">
+
+    <jsp:include page="/WEB-INF/partials/messages.jsp"/>
+
     <h1>Update your Ad</h1>
     <form action="/ads/updateads" method="post">
         <div class="form-group">
