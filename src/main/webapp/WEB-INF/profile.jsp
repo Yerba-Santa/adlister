@@ -69,9 +69,36 @@
                             <p>${ad.description}</p>
                             <a href="${pageContext.request.contextPath}/ads/updateads?ad_id=${ad.id}"
                                class="btn btn-sm btn-success">Update</a>
-                            <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}"
-                               onclick="return confirm('Are you sure you want to delete this item?')"
-                               class="btn btn-sm btn-danger">Delete</a>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal${ad.id}">
+                                Delete
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal${ad.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirm Action</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to Delete?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                            <a href="/ads/delete?ad_id=${ad.id}" class="btn btn-danger">Yes</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+<%--                            <a href="${pageContext.request.contextPath}/ads/delete?ad_id=${ad.id}"--%>
+<%--                               onclick="return confirm('Are you sure you want to delete this item?')"--%>
+<%--                               class="btn btn-sm btn-danger">Delete</a>--%>
                         </div>
                     </div>
                 </c:forEach>
